@@ -1,11 +1,6 @@
-pre.highlight {
-	padding: 1em;
-}
-
 .highlight {
 	margin-bottom: 1.5em;
-	@include font-rem(12);
-	line-height: 1.5;
+	@include font(12);
 	color: #d0d0d0;
 	border: 1px solid darken($body-color, 5);
 	background-color: #272822;
