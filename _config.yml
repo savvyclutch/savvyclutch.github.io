@@ -1,5 +1,5 @@
-title:            Blog Title
-description:      Describe your website here.
+title:            SavvyClutch Engineering Club Blog
+description:      Work notes.
 # put your disqus here
 disqus_shortname: 
 reading_time:     true # if true, shows the estimated reading time for a post
@@ -8,7 +8,7 @@ logo:             images/logo.png # logo visible in the topbar
 # Your site's domain goes here (eg: //mmistakes.github.io, http://mademistakes.com, etc)
 # When testing locally leave blank or use http://localhost:4000
 
-url: http://aronbordin.com/neo-hpstr-jekyll-theme
+url: http://savvyclutch.com
 
 # draw your top menu here
 # each item must have a title and a url.
@@ -18,10 +18,6 @@ url: http://aronbordin.com/neo-hpstr-jekyll-theme
 menu:
   - title: 'Home'
     url: '/'
-  - title: 'Fork'
-    url: 'http://github.com/aron-bordin/neo-hpstr-jekyll-theme'
-  - title: 'Install'
-    url: '/theme-setup/'
   - title: 'Tags'
     url: '/tags'
   - title: 'Categories'
@@ -36,29 +32,44 @@ menu:
         url: '/intro/sample-post/'
 
 # Owner/author information
-owner:
-  name:           Your name
-  site:           http://aronbordin.com
-  avatar:         images/avatar.jpg
-  bio:            "Your bio goes here. It shouldn't be super long but a good two sentences or two should suffice."
-  email:          you@email.com
+#owner:
+#  name:           Your name
+#  site:           http://aronbordin.com
+#  avatar:         images/avatar.jpg
+#  bio:            "Your bio goes here. It shouldn't be super long but a good two sentences or two should suffice."
+#  email:          you@email.com
   # Twitter nick for use in Twitter cards and follow button.
-  twitter: aron_bordin # if no twitter in this config, the twitter follow button will be removed
+#  twitter: aron_bordin # if no twitter in this config, the twitter follow button will be removed
   # GitHub nick for use in follow button in author block.
-  github: aron-bordin
+#  github: aron-bordin
+
+authors:
+  bogdan:
+    name: Bogdan Frankovskyi
+    display_name: Bogdan
+    gravatar: 096968a285ac70270237bc78e0bb57cb
+    email: bogdan@savvyclutch.com
+    site: http://savvyclutch.com
+#    twitter: company
+#    github: hhattori
+  sergii:
+    name: Sergii Naumenko
+    display_name: Sergii
+#    gravatar: 12e480a364a5c19214f99b4dfe9a11d5
+    email: sergii@savvyclutch.com
 
 # Twitter account associated with the site if different from owner/author twitter account.
 # Used in Twitter cards.
 twitter: 
 
 # Social networking links used in author block underneath posts. Update and remove as you like.
-social:
-  - title: "github"
-    url: "https://github.com/aron-bordin"
-  - title: "linkedin"
-    url: "https://br.linkedin.com/in/aronbordin"
-  - title: "youtube"
-    url: "https://www.youtube.com/channel/UCfnSek-9HPWOx5e2pH7VFgg"
+#social:
+#  - title: "github"
+#    url: "https://github.com/aron-bordin"
+#  - title: "linkedin"
+#    url: "https://br.linkedin.com/in/aronbordin"
+#  - title: "youtube"
+#    url: "https://www.youtube.com/channel/UCfnSek-9HPWOx5e2pH7VFgg"
 # Background image to be tiled on all pages
 background:
 
@@ -69,7 +80,7 @@ google_verify:
 bing_verify:
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
+timezone:    Europe/Uzhgorod
 locale:      en_US
 future:      true
 highlighter: rouge
