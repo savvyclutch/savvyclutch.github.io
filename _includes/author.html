@@ -22,12 +22,12 @@
         {% endfor %}
       </ul>
       {% if author.github %}
-        <a aria-label="Follow @{{site.owner.github}} on GitHub" data-style="mega"
-         href="https://github.com/{{site.owner.github}}" class="github-button">Follow @{{author.github}}</a>
+        <a aria-label="Follow @{{author.github}} on GitHub" data-style="mega"
+         href="https://github.com/{{author.github}}" class="github-button">Follow @{{author.github}}</a>
       {% endif %}
       <br>
       {% if author.twitter %}
-        <a href="https://twitter.com/{{site.owner.twitter}}" class="twitter-follow-button" data-show-count="false"
+        <a href="https://twitter.com/{{author.twitter}}" class="twitter-follow-button" data-show-count="false"
          data-size="large">Follow @{{author.twitter}}</a>
       {% endif %}
     </div>
