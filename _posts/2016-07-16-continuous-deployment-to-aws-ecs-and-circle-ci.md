@@ -17,6 +17,7 @@ We have some kind of website with dockerised environment and we want to configur
 ![Deploy Process]({{ site.url }}/images/posts/aws_deploy/deploy_process.png)
 
 What we a going to use to do that:
+
 1. CircleCI as build server
 2. Github as code repository
 3. Amazon EC2 Container Service (ECS) as production environment and our deployment target
@@ -56,7 +57,9 @@ We are going to use S3 bucket with the special access rules based on AWS Identit
 
 # What we are going to do
 
-Our deployment process will be look like this
+So, our detailed deployment process will be look like this:
+
+![Detailed Process]({{ site.url }}/images/posts/aws_deploy/process.png)
 
 
 1. Create task template for ECS service
