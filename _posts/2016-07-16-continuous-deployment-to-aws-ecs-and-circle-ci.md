@@ -5,9 +5,8 @@ description: "Tutorial, how to configure AWS ECS cluster, CircleCI and manage se
 tags: [docker, aws ecs, circleci, devops]
 author: bogdan
 image:
-    feature: feature.jpg
-    credit: dargadgetz
-    creditlink: http://www.dargadgetz.com/ios-8-abstract-wallpaper-pack-for-iphone-5s-5c-and-ipod-touch-retina/
+    feature: posts/aws_deploy/title.jpg
+
 ---
 
 Intro here
