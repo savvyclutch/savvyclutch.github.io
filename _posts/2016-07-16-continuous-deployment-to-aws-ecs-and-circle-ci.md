@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Continuous deployment to AWS ECS from CircleCI with secrets keys management
+title: Continuous deployment to AWS ECS from CircleCI
 description: "Tutorial, how to configure AWS ECS cluster, CircleCI and manage secrets during deployment"
 tags: [docker, aws ecs, circleci, devops]
 author: bogdan
@@ -22,6 +22,8 @@ What we a going to use to do that:
 2. Github as code repository
 3. Amazon EC2 Container Service (ECS) as production environment and our deployment target
 4. Amazon S3 bucket to keep our secret keys used by website
+
+<!-- more -->
 
 # CircleCI
 
@@ -61,13 +63,66 @@ So, our detailed deployment process will be look like this:
 
 ![Detailed Process]({{ site.url }}/images/posts/aws_deploy/process.png)
 
+And implementation steps:
 
-1. Create task template for ECS service
-2. Configure secrets bucket
-3. Configure docker image
-4. Configure CircleCI
+1. Create repository for docker images
+2. Create task template for ECS service
+3. Configure secrets bucket
+4. Configure docker image
+5. Create cluster
+6. Configure cluster Service
+7. Configure CircleCI
+
+## Create repository for docker images
+
+Go to the `Amazon EC2 container service` -> `Repositories` in your AWS Console. Click `Create repository` and enter repository name.
+I suggest to use more specific name, like `projectname-server`. Save `Repository URL` and follow the instructions. 
 
 ##  Create task template for ECS service
+
+Now we need to create template for `Task Definitions`. We will create new `Task Definition` after build new docker image using this template.
+
+`ecs-task-template.json`
+
+{% highlight json %}
+{% raw %}
+ {
+     "family": "<TASK FAMILY>",
+     "containerDefinitions": [
+         {
+             "image": "<Repository URL>:%IMAGE_TAG%",
+             "name": "<TASK NAME>",
+             "cpu": 384,
+             "memory": 512,
+             "essential": true,
+             "portMappings": [
+                 {
+                     "containerPort": 80,
+                     "hostPort": 80,
+                     "protocol": "tcp"
+                 }
+             ]
+         }
+     ]
+ }
+{% endraw %}
+{% endhighlight %}
+
+Replace `<Repository URL>` with docker repository url from the previous step. `<TASK FAMILY>` we will replace later with the correct `Task` family option. 
+You can choose  any `<TASK NAME>` you want (`website`, for example).  
+
+On deployment our deploy script will replace `%IMAGE_TAG%` to the real one and produce new `Task Definition` for `Service`. 
+`memory`, `portMappings` and `cpu` options are self-explained, but make sure that you allocate enough memory for container.
+
+## Configure secrets bucket
+
+## Configure docker image
+
+## Create cluster
+
+## Configure cluster Service
+
+## Configure CircleCI
 
 # Literature
 
