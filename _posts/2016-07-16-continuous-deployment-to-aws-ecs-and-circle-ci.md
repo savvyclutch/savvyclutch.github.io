@@ -63,6 +63,8 @@ So, our detailed deployment process will be look like this:
 
 ![Detailed Process]({{ site.url }}/images/posts/aws_deploy/process.png)
 
+Simple, heh?
+
 And implementation steps:
 
 1. Create repository for docker images
@@ -76,7 +78,7 @@ And implementation steps:
 ## Create repository for docker images
 
 Go to the `Amazon EC2 container service` -> `Repositories` in your AWS Console. Click `Create repository` and enter repository name.
-I suggest to use more specific name, like `projectname-server`. Save `Repository URL` and follow the instructions. 
+I suggest to use more specific name, like `projectname-server`. Save `Repository URL`. 
 
 ##  Create task template for ECS service
 
@@ -116,7 +118,122 @@ On deployment our deploy script will replace `%IMAGE_TAG%` to the real one and p
 
 ## Configure secrets bucket
 
+Create bucket on S3 with name `ecs-secrets` and add following policy to the bucket (`Properties` -> `Permissions` -> `Edit bucket policy`)
+
+{% highlight json %}
+{% raw %}
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "DenyUnEncryptedObjectUploads",
+			"Effect": "Deny",
+			"Principal": "*",
+			"Action": "s3:PutObject",
+			"Resource": "arn:aws:s3:::ecs-secrets/*",
+			"Condition": {
+				"StringNotEquals": {
+					"s3:x-amz-server-side-encryption": "AES256"
+				}
+			}
+		},
+		{
+			"Sid": " DenyUnEncryptedInflightOperations",
+			"Effect": "Deny",
+			"Principal": "*",
+			"Action": "s3:*",
+			"Resource": "arn:aws:s3:::ecs-secrets/*",
+			"Condition": {
+				"Bool": {
+					"aws:SecureTransport": "false"
+				}
+			}
+		},
+		{
+			"Sid": "Access-from-specific-VPC-only",
+			"Effect": "Allow",
+			"Principal": "*",
+			"Action": [
+				"s3:GetObject",
+				"s3:PutObject",
+				"s3:ListBucket"
+			],
+			"Resource": [
+				"arn:aws:s3:::ecs-secrets",
+				"arn:aws:s3:::ecs-secrets/*"
+			],
+			"Condition": {
+				"StringEquals": {
+					"aws:sourceVpc": "<YOUR VPC ID>"
+				}
+			}
+		}
+	]
+}
+{% endraw %}
+{% endhighlight %}
+
+
+This policy allow to put only encrypted files inside, and allow to get files from specific VPC only.  
+(Assume you already have configured VPC. If not - you can create new one on `Create cluster` step and use this new VPC for bucket policy).
+
+To upload new file to the bucket you can use following command with [aws cli](https://aws.amazon.com/cli/) (AWS command line tool):
+
+`aws s3 cp website_secrets.txt s3://ecs-secrets/website_secrets.txt --sse`
+
+Put your secret environment inside `website_secrets.txt`, for example:
+
+
+{% highlight bash %}
+SECRET_KEY_BASE=adsafasdfsafwfwefdsfsdacwaeewfdadsfasdfewceascadcasdcdsadceeas
+DB_HOST=db_host_dress
+DB_USER=dbuser
+DB_PASSWORD=supersecretpass
+{% endhighlight %}
+
+Also, I suggest to enable logging for this bucket — just in case. 
+
 ## Configure docker image
+
+Now we need to configure our docker image to load secrets from S3 into container environment on container start. We will use endpoint script for this.
+It will load each line of the `website_secrets.txt` into container environment, so all environment variables will be accessible by webserver. 
+Create following `secrets-endpoint.sh` inside your repository:
+
+{% highlight bash %}
+#!/bin/bash
+
+# Load the S3 secrets file contents into the environment variables
+eval $(aws s3 cp s3://ecs-secrets/website_secrets.txt - | sed 's/^/export /')
+
+exec "$@"
+{% endhighlight %}
+
+Don't forget add `execute` permissions to script.
+
+{% highlight bash %}
+$ chmod +x ./website_secrets.txt
+{% endhighlight %} 
+
+As you can see, this script use aws cli to download file with secrets, so before run it in container we should install it into docker images. 
+Change your `Dockerfile` and add following lines to install aws cli inside docker image:
+
+{% highlight bash %}
+RUN apt-get install -y python curl unzip && cd /tmp && \
+    curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" \
+    -o "awscli-bundle.zip" && \
+    unzip awscli-bundle.zip && \
+    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
+    rm awscli-bundle.zip && rm -rf awscli-bundle
+{% endhighlight %}
+
+and, we need to put endpoint script to the image and run it right before `CMD` line in `Dockerfile`:
+
+{% highlight bash %}
+...
+ADD ./secrets-entrypoint.sh /
+ENTRYPOINT ["/secrets-entrypoint.sh"]
+CMD <YOUR RUN OPTIONS HERE>
+{% endhighlight %}
 
 ## Create cluster
 
