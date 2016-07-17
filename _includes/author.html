@@ -13,7 +13,11 @@
           <img class="author-img" src="https://s.gravatar.com/avatar/{{author.gravatar}}" alt="{{author.name}}"/>
         {% endif %}
       {% endif %}
-      <div class="author-bio">{{author.bio}}</div>
+      <div class="author-bio">
+        {{author.bio | markdownify}}
+        <br>
+        Contact: <a href="mailto:{{author.email}}">{{author.email}}</a>
+      </div>
     </div>
     <div class="author-share">
       <ul class="list-inline social-buttons">

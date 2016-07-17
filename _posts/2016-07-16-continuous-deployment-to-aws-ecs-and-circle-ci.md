@@ -177,7 +177,7 @@ Create bucket on S3 with name `ecs-secrets` and add following policy to the buck
 This policy allow to put only encrypted files inside, and allow to get files from specific VPC only.  
 (Assume you already have configured VPC. If not - you can create new one on `Create cluster` step and use this new VPC for bucket policy).
 
-To upload new file to the bucket you can use following command with [aws cli](https://aws.amazon.com/cli/) (AWS command line tool):
+To upload a new file to the bucket you can use following command with [aws cli](https://aws.amazon.com/cli/) (AWS command line tool):
 
 `aws s3 cp website_secrets.txt s3://ecs-secrets/website_secrets.txt --sse`
 
@@ -208,22 +208,24 @@ eval $(aws s3 cp s3://ecs-secrets/website_secrets.txt - | sed 's/^/export /')
 exec "$@"
 {% endhighlight %}
 
-Don't forget add `execute` permissions to script.
+Don't forget to add `execute` permissions to script.
 
 {% highlight bash %}
 $ chmod +x ./website_secrets.txt
 {% endhighlight %} 
 
-As you can see, this script use aws cli to download file with secrets, so before run it in container we should install it into docker images. 
-Change your `Dockerfile` and add following lines to install aws cli inside docker image:
+As you can see, this script use aws cli to download file with secrets, so before run it in container we should install aws cli into docker images. 
+Change your `Dockerfile` and add following lines to install aws cli inside docker image (example for debian-based distro images, like Ubuntu):
 
 {% highlight bash %}
+...
 RUN apt-get install -y python curl unzip && cd /tmp && \
     curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" \
     -o "awscli-bundle.zip" && \
     unzip awscli-bundle.zip && \
     ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
     rm awscli-bundle.zip && rm -rf awscli-bundle
+...
 {% endhighlight %}
 
 and, we need to put endpoint script to the image and run it right before `CMD` line in `Dockerfile`:
@@ -237,9 +239,191 @@ CMD <YOUR RUN OPTIONS HERE>
 
 ## Create cluster
 
+For cluster creation I suggest to use [ecs cli](https://github.com/aws/amazon-ecs-cli). There is two reasons to use ecs cli insted of aws cli - first of all it mo simple to use.
+The secуnd reason - ecs cli setup cluster through [Cloud Formation](https://aws.amazon.com/cloudformation/) which will manage cluster resources - EC2 instances, vpc, security roles etc.
+So we don't need to do that manually. Additionally it allow to use docker-compose yml file for Task Definition creation. We are not going to use this feature, but it can be helpful in other scenarios.
+
+So, install the ecs cli and create configuration file for it (on Linux it will be `~/.ecs/config`). Example config file:
+{% highlight conf %}
+[ecs]
+cluster = <CLUSTER NAME>
+aws_profile = default
+region = us-east-1
+aws_access_key_id =
+aws_secret_access_key =
+{% endhighlight %}
+
+Choose your cluster name at that point. Usually I create the name by pattern `projectname-formation` to add information how this cluster resources are managed (`Cloud Formation` in this case).
+
+To create cluster on existing VPC run the following command:
+
+{% highlight bash %}
+$ ecs-cli up --keypair <key here> --capability-iam --size 2 --vpc <VPC ID> --subnets subnet-<SUBNET 1 ID>,subnet-<SUBNET 2 ID>
+{% endhighlight %}
+
+Keypairs are stored on `AWS EC2` -> look to the left panel -> `Key pairs`. There you can create key pair to access to the EC2 instances.
+
+If you still have no VPC, `ecs-cli up` without `--vpc` option will create a new one. 
+
+You should add minimum 2 instances in to your cluster in order to have one machine free as deployment target. 
+
 ## Configure cluster Service
 
+After cluster creation we should create `Service` in the cluster to manage our `Tasks`. Before do that, lets push latest docker image to the ECR repository and register a new Task for this image.
+
+Login to the ECR:
+{% highlight bash %}
+$ $(aws ecr get-login --region us-east-1)
+{% endhighlight %}
+
+Build new image
+{% highlight bash %}
+$ docker build -t my-website .
+{% endhighlight %}
+
+Tag image with ECR tags
+{% highlight bash %}
+$ docker tag my-website <ECR Repository URL>:1
+$ docker tag my-website <ECR Repository URL>:latest
+{% endhighlight %}
+
+Where `<ECR Repository URL>` - URL to the project docker repository (looks like `1234567890.dkr.ecr.us-east-1.amazonaws.com/my-website`)
+
+Push images to ECR
+{% highlight bash %}
+$ docker push <ECR Repository URL>:1
+$ docker push <ECR Repository URL>:latest
+{% endhighlight %}
+
+Now, let's create a new `Task Definition` and register it on ECS:
+
+{% highlight bash %}
+$ sed -e "s;%IMAGE_TAG%;1;g" ecs-task-template.json > my_website-1.json 
+$ aws ecs register-task-definition --family <TASK FAMILY> --cli-input-json file://my_website-1.json
+{% endhighlight %}
+
+Where `<TASK FAMILY>` can be any name you want to group your `Tasks`. Ususally, I use `project_name`, like `my_great_website`.
+ 
+Ok, now we can create `Service`. Go to the ECS -> your cluster -> `Service` tab -> click `Create` button.
+ 
+Choose your `Task Definition`, add service name (`website`) and set 1 task in field `Number of tasks`.
+`Service` should run container on one of the registered instances. 
+
+Let's make sure that everything works. Go to the `Tasks` tab and click on value in `Container Instance` column for the active task.
+You should be able to see `Public IP`. Try to open it in browser, and check is everything works as expected.
+
+### Troubleshooting
+
+If something goes wrong, you can check your container in instance. To do that, at first, you must allow SSH connection to the instance. 
+
+* Go to instance on EC2 (you can do it from `Container Instance` page)
+* `Description` -> `Security groups`
+* Click on current security group
+* Go to `Inbound`
+* Click `Edit`
+* Add rule for SSH
+
+Connect to the instance:
+
+{% highlight bash %}
+$ ssh -i your_keypair.pem -o 'IdentitiesOnly yes' ec2-user@<INSTANCE IP>
+{% endhighlight %}
+
+where `<INSTANCE IP>` is public IP for EC2 instance with pur container. 
+
+After that you can check containers on this instance:
+{% highlight bash %}
+$ docker ps -a
+{% endhighlight %}
+
+And see container logs:
+{% highlight bash %}
+$ docker logs -f <CONTAINER ID>
+{% endhighlight %}
+
+Also you can do regular docker stuff. 
+
+Don't forget to remove SSH permission from instance after debugging!
+
 ## Configure CircleCI
+
+If everything works fine, we can configure CircleCI to automatically deploy new version of docker image to the AWS ECS.
+Add empty `circle.yml` to the project and connect project on service.
+
+We need AWS credentials to allow CircleCI to push new images to the ECR and update ur ECS Service. I's highly recommended to create separate role for that on AWS IAM.
+ 
+Add AWS credentials to the CircleCI project settings.
+
+project settings -> `Permissions` section -> `AWS permissions` -> add AWS key and secret
+
+`aws cli` expect default region for work, so we need to set environment variable with AWS region in build environment
+
+Add default AWS region:
+
+project settings -> `Build Settings` section -> `Environment Varibles` -> add `AWS_DEFAULT_REGION`  varible with you region (`us-east-1` in my case)
+
+Now, configure `circle.yml` to build new image and push it to the ECR and run deployment script.  Example:
+
+{% highlight yaml %}
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - $(aws ecr get-login --region us-east-1)
+    - docker build -t my-website .
+
+test:
+  override:
+    ## put your test command here
+    ## - docker run -e RAILS_ENV=test -it my-website rake test
+
+deployment:
+  hub:
+    branch: master ## do deployment on commit to the master branch only 
+    commands:
+      - docker tag my-website <ECR Repository URL>:$CIRCLE_SHA1
+      - docker tag my-website <ECR Repository URL>:latest
+      - docker push <ECR Repository URL>:$CIRCLE_SHA
+      - docker push <ECR Repository URL>:latest
+      - ./deploy.sh
+{% endhighlight %}
+
+Now we need to creare `deploy.sh`. This script should:
+
+1. Create new task definition for docker image with `$CIRCLE_SHA1` tag
+2. Register it in cluster `Service`
+3. Run `Service` update process
+
+Example:
+
+{% highlight bash %}
+#!/bin/bash
+SERVICE_NAME=<YOUR SERVICE NAME>
+CLUSTER_NAME=<YOUR CLUSTER NAME>
+BUILD_NUMBER=${CIRCLE_BUILD_NUM}
+IMAGE_TAG=${CIRCLE_SHA1}
+TASK_FAMILY=<YOUR TASK FAMILY>
+
+# Create a new task definition for this build
+sed -e "s;%IMAGE_TAG%;${IMAGE_TAG};g" ecs-task-template.json > my_website-${BUILD_NUMBER}.json
+aws ecs register-task-definition --family ${TASK_FAMILY} --cli-input-json file://my_website-${BUILD_NUMBER}.json
+
+# Update the service with the new task definition and desired count
+TASK_REVISION=`aws ecs describe-task-definition --task-definition ${TASK_FAMILY} | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
+DESIRED_COUNT=`aws ecs describe-services --cluster ${CLUSTER_NAME} --services ${SERVICE_NAME} | egrep "desiredCount" | head -1 | tr "/" " " | awk '{print $2}' | sed 's/,$//'`
+if [ ${DESIRED_COUNT} = "0" ]; then
+    DESIRED_COUNT="1"
+fi
+
+aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --task-definition ${TASK_FAMILY}:${TASK_REVISION} --desired-count ${DESIRED_COUNT}
+{% endhighlight %}
+
+Don't forget to replace `<YOUR SERVICE NAME>` `<YOUR CLUSTER NAME>` `<YOUR TASK FAMILY>` with the correct values.
+
+That's it. Now you have Continues Deployment to the Amazon EC2 Container Service. To more information, please check the Literature section.
+Hopefully this will be helpfull for someone. 
 
 # Literature
 
