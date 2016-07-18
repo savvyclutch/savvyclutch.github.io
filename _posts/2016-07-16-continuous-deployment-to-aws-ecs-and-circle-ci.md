@@ -9,9 +9,9 @@ image:
 
 ---
 
-Intro here
+You know what it all about. So let's start. 
 
-We have some kind of website with dockerised environment and we want to configure automatic zero-time deployment on push to the our github repository `master` branch.
+We have some kind of website with dockerized environment and we want to configure automatic zero-time deployment on push to the our github repository `master` branch.
 
 ![Deploy Process]({{ site.url }}/images/posts/aws_deploy/deploy_process.png)
 
@@ -52,9 +52,14 @@ It's a docker registry like Dockerhub, but managed by Amazon and have more optio
 
 # S3 bucket
 
-One of the challenges when deploying production applications using Docker containers is deciding how to handle run-time configuration and secrets (database credentials, certs, etc.). 
-We are going to use S3 bucket with the special access rules based on AWS Identity and Access Management (IAM) role to handle this.
+Common problem people face during deployment with docker is how to handle security info like database credentials, or third-party API keys, passwords and tokens.
+
+Including this information into docker image is not secure enough because it can be retrieved from docker cache or your infrastructure will be compromised if someone got access to your docker repository or image.
+Anyway, to include this variables to image you should provide them to the build server or commit it into your code repository which is also not a good choice to keep secured info, especially in case you use third-party build services.
+Some people add this information to the ECS Task definition, but it's also require to store this info inside build server environment or code repository.
  
+We are going to use S3 bucket with the special access rules based on AWS Identity and Access Management (IAM) role to handle this. 
+In this case, environment variables with sensitive data can be retrieved only from inside of our VPC.   
 
 # What we are going to do
 
@@ -185,12 +190,14 @@ Put your secret environment inside `website_secrets.txt`, for example:
 
 {% highlight bash %}
 SECRET_KEY_BASE=adsafasdfsafwfwefdsfsdacwaeewfdadsfasdfewceascadcasdcdsadceeas
-DB_HOST=db_host_dress
+DB_HOST=db_host_adress
 DB_USER=dbuser
 DB_PASSWORD=supersecretpass
 {% endhighlight %}
 
 Also, I suggest to enable logging for this bucket — just in case. 
+
+UPD. Now we can provide access to this bucket for [specific Task only](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html), which is more secure than give access from VPC. 
 
 ## Configure docker image
 
