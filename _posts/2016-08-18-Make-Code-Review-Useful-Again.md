@@ -103,7 +103,7 @@ It's good to use automatic lint programs to check code conventions, so you will 
 
 **Use Fawler's 'code smells’ checklist**. Using this checklist helps to quickly see the issues in the code and make your review more concrete - It’s much easier to explain what wrong if everyone uses the same definition and understanding what, actually, is "wrong" and why. 
 
-# CONCLUSION
+
 
 Code review is great technique that makes team competency grow, and grow fast, and it's very important to do it on a regular basis. 
 
