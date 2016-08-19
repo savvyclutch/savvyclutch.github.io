@@ -1,20 +1,17 @@
 ---
 title: Make Code Review Useful Again
+description: "A few tips on how to organize code review process in a most effective and less distracting way. "
 layout: post
 author: bogdan
-permalink: /make-code-review-useful-again/
-source-id: 1z32RTpD_VkWUjfRm5EFxC-b5w-0kFcpWXXaGZC3RLbY
-published: true
+tags: [code review, agile, process]
+image:
+    feature: posts/code_review/title.jpg
+    
 ---
-MAKE CODE REVIEW USEFUL AGAIN
 
-![image alt text]({{ site.url }}/public/6ZNOS84SAcp9ArKt6r1eg_img_0.jpg)
-
-**Bogdan Frankovskyi**
-
-# INTRODUCTION
-
-Code Review is commonly used technique and it's definitely one of the must-have processes to keep high quality of code. But quite often it becomes a formal process or people experience different issues using it. So let’s take a look what is Code Review and what good and bad parts we can get using this technique. 
+Code Review is commonly used technique and it's definitely one of the must-have processes to keep high quality of code. 
+But quite often it becomes a formal process or people experience different issues using it. 
+So let’s take a look what is Code Review and what good and bad parts we can get using this technique. 
 
 # WHY
 
@@ -35,6 +32,8 @@ Code Review is used for a different reasons regarding to process specifics - for
 7. Education. Doing the Code Review developers educating each other.
 
 8. Make sure implementation complies to coding styles, standards, etc.
+
+<!-- more -->
 
 # GOOD PARTS
 
