@@ -75,7 +75,7 @@ Anyone participating in the code review should have a checklist for what should 
 
 ## Prepare pull request/code for a review
 
-**Do not fear. **Engineers born brave, so do not fear to show your work. Any advice or found issue will make you better, and make your colleagues to trust your opinion and your expertise.
+**Do not fear.** Engineers born brave, so do not fear to show your work. Any advice or found issue will make you better, and make your colleagues to trust your opinion and your expertise.
 
 **Always describe what you did, context, and how you did it in general**. Try to be short, but always explain non-oblivious choices. 
 
