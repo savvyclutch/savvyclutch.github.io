@@ -1,7 +1,7 @@
 ---
 title: Measuring software engineering competency
 layout: post
-author: bogdan
+author: [sergii, bogdan]
 permalink: /measuring-software-engineering-competency/
 source-id: 1OWEfPgEhJI5Lb4Eq5Llcj7UH2R1PC7ONGYjRcLc61oQ
 published: true
