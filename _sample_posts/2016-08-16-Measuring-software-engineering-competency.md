@@ -1,7 +1,8 @@
 ---
 title: Measuring software engineering competency
 layout: post
-author: [sergii, bogdan]
+description: "Measuring... something that's neither easy nor simple. But let's try!"
+author: bogdan, sergii
 permalink: /measuring-software-engineering-competency/
 source-id: 1OWEfPgEhJI5Lb4Eq5Llcj7UH2R1PC7ONGYjRcLc61oQ
 published: true
@@ -14,17 +15,17 @@ by Bogdan Frankovskyi and Sergii Naumenko
 
 # OVERVIEW & PURPOSE
 
-As is well known, "if you can't measure it, you can’t ~~measure~~ manage it." Of course, it’s mostly advice, than a rule, but there's a certain common sense of measuring. At least we should try measure to see the progress. Measuring competency and quality is not simple, because there are no specific rules, or attributes. But there are always some things that have to be done to keep quality on a high level in the long run.  
-
-Sixteen years ago [Joel Spolsky](http://www.joelonsoftware.com/) tried to build ф simple checklist for a team to rate its quality  in his [The Joel Test](http://www.joelonsoftware.com/articles/fog0000000043.html). Much time has passed since the publication of this test, so we decide to review it, and try to use it to improve our quality and work efficiency. 
-
-This document is an attempt to revised  and extend it from just a test to a set of rules that allow to measure and improve our engineering competency. 
+Why do we want to measure our competency? Well... because we want to improve. And we have to! The world is rapidly changing: tools, technologies, paradigms, concepts, processes, competitors, crises. We must run to stay in business. We must deliver the product, maintain the quality, meet the budget...
+But competency and quality measuring is tough! We don't have rules to assess them. [Joel Spolsky](http://www.joelonsoftware.com/) tried to build a simple checklist for a team to rate its quality in his [The Joel Test](http://www.joelonsoftware.com/articles/fog0000000043.html), but it was sixteen years ago. So let's stand on the shoulders of giants, and revise it from just the test to a set of rules that can guide us for the better software engineering competency.  
+ 
 
 # HOW TO USE IT
 
-The list of rules is splitted in two parts: must have and good to have. Each rule is a Yes/No question. "Yes" answer to a “Must” rule gives you 0 points, “no” answer gives you -1 point. “Yes” answer to a “Good” rule gives you 1 point, “no” answer gives you 0 points. The resulting sum of points is your Engineering Competency Score when negative number means that either your competency is questionable or is going to degrade over the time.  0 score means that you follow professional discipline and capable of producing good quality product. Positive number says that you increase your competency and grow as professional.
 
-# MUST RULES
+The list of rules is splitted in two parts: Obligations and Merits. Each rule is a Yes/No question. "Yes" answer to an "Obligation" gives you 0 points, “No” answer gives you -1 point. “Yes” answer to a “Merit” gives you 1 point, “No” answer gives you 0 points. You've got the idea, right? Having merits is good, not fulfilling obligations is bad.
+The resulting sum of points is your, let's say, Engineering Competency Score when negative number means that either your competency is questionable or is going to degrade over the time. 0 score means that you follow the professional discipline and capable of producing good quality product. Positive number says that you increase your competency and grow as professional.
+
+# OBLIGATIONS
 
 1. Do you have Continuous Integration?
 
@@ -56,7 +57,7 @@ The list of rules is splitted in two parts: must have and good to have. Each rul
 
 15. Do you have a person that advocates rules from above?
 
-# GOOD RULES
+# MERITS
 
 1. Do you contribute to Open Source?
 
