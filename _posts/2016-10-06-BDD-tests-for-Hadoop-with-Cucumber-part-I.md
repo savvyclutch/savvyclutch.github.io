@@ -4,6 +4,7 @@ description: "Tutorial how to create behaviour tests for Hadoop application with
 layout: post
 author: bogdan
 tags: [bog data, java, hadoop, qa]
+modified: 2016-10-06
 image:
     feature: posts/bdd_test_hadoop/title.jpg
     
@@ -302,7 +303,7 @@ public class CallStream {
 
 Let’s try to build jar file:
 
-> docker run -it --rm bdd_hadoop gradle jar
+> docker run --rm bdd_hadoop gradle jar
 
 Now we need to create some acceptance tests. This will be in the the Part II.
 
