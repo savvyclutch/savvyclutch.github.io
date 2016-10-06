@@ -101,7 +101,7 @@ It's good to use automatic lint programs to check code conventions, so you will 
 
 **Make sure you are really understand on what you are looking at**.  Ask author to help you with this understanding. Sometimes the best way to do this - review this code in pair with the author or other reviewer. 
 
-**Use Fawler's 'code smells’ checklist**. Using this checklist helps to quickly see the issues in the code and make your review more concrete - It’s much easier to explain what wrong if everyone uses the same definition and understanding what, actually, is "wrong" and why. 
+**Use Fowler's 'code smells’ checklist**. Using this checklist helps to quickly see the issues in the code and make your review more concrete - It’s much easier to explain what wrong if everyone uses the same definition and understanding what, actually, is "wrong" and why. 
 
 
 
