@@ -10,24 +10,24 @@ image:
     
 ---
 
-Big Data is a process of a huge amount of structured (more or less) data that should be filtered or sorted for future analysis or, 
+Big Data is a processing of a huge amount of structured (more or less) data that should be filtered or sorted for future analysis or, 
 actually made analysis. So much data that you can’t process it on the one computer for a reasonable time. 
 This can be logs from services, like call service, or logs from web servers that contain billions of records, 
-so you should process data in parallel  on a bunch of computers. Do do it so we use specific software based on MapReduce pattern. 
-In our case, we use Hadoop with Cascading framework. Hadoop implement MapReduce and Cascading framework contain a lot of useful tools, 
+so you should process data in parallel  on a bunch of computers. To do it so we use specific software based on MapReduce pattern. 
+In our case, we use Hadoop with Cascading framework. Hadoop implements MapReduce and Cascading framework contains a lot of useful tools, 
 for example abstraction to Amazon S3, so we can use S3 buckets as input/output folders for processing jobs, 
-but in the same time we allow to use regular file systems on developer machines in development and test purposes.
+but at the same time we allow to use regular file systems on developer machines for development and test purposes.
 
-As any other piece of software it should be tested before using in production, especially because logical mistakes in processing a lot of data cost a much. 
-Unfortunately there are no much information about BDD testing the Hadoop and Hive jobs. 
-So i decide to write how we do it in our Cascading project here, in Intelliarts.
+As any other piece of software it should be tested before using in production, especially because of high cost of logical mistakes in processing a lot amount of data. 
+Unfortunately there are no much information about BDD testing of Hadoop and Hive jobs. 
+So I decided to write how we do it in our Cascading project here, in Intelliarts.
 
 <!-- more -->
 
 # What do we have
 
-Assume we have a lot of data about phone calls in bunch of files. File contain lines with following format: `Id,country,time,duration` 
-Where `id` is call unique id, `country` is a caller country, `time` is a time when call start (timestamp) and `duration` is a call duration in milliseconds. 
+Assume we have a lot of data about phone calls in a bunch of files. File contains lines in the following format: `Id,country,time,duration` 
+Where `id` is a call unique id, `country` is a caller country, `time` is a time when call started (timestamp) and `duration` is a call duration in milliseconds. 
 
 For example: 
 ```
@@ -39,15 +39,15 @@ For example:
 
 # What we want to do?
 
-Let's sort calls from these records by country (each country will be in separate folder) and change the format of records - replace delimiters from `,` to tab symbol `\t`. 
-From the date of previous example so we should get the folders `US`, `GB`, `UA` and `UA` will contain file with records looks like this:
+Let's sort calls from these records by country (each country will be in a separate folder) and change the format of records - replace delimiters from `,` with tab symbol `\t`. 
+From the data of previous example so we should get the folders `US`, `GB`, `UA` and `UA` will contain file with records looks like this:
 
 ```
 id	country	time	duration
 0000	UA	1433998201	60000
 ```
 
-And, we want to be sure that we did any mistakes during implementation, so we want to test the results. 
+And, we want to be sure that we did not make any mistakes during implementation, so we want to test the results. 
 What we will use:  
 * Hadoop + Cascading for data processing
 * Gradle for build management
@@ -95,7 +95,7 @@ RUN gradle dependencies && gradle install
 CMD gradle cucumber
 {% endhighlight %}
 
-Okey, now we have environment. Let’s create project gradle config to download all dependencies for Hadoop application:
+Okey, now we have the environment. Let’s create a project gradle config to download all dependencies for Hadoop application:
 
 {% highlight groovy %}
 {% raw %}
@@ -209,7 +209,7 @@ jar {
 {% endraw %}
 {% endhighlight %}
 
-As you can see there are two custom tasks - `cucumber` and `jar`.  First one run cucumber tests and the second one compile the source to the production jar-file.
+As you can see there are two custom tasks - `cucumber` and `jar`.  First one runs cucumber tests and the second one compiles the source to the production jar-file.
 Now we can build the image:
 > docker build -t bdd_hadoop .
 
