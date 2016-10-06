@@ -22,8 +22,9 @@ As any other piece of software it should be tested before using in production, e
 Unfortunately there are no much information about BDD testing the Hadoop and Hive jobs. 
 So i decide to write how we do it in our Cascading project here, in Intelliarts.
 
-# What do we have
+<!-- more -->
 
+# What do we have
 
 Assume we have a lot of data about phone calls in bunch of files. File contain lines with following format: `Id,country,time,duration` 
 Where `id` is call unique id, `country` is a caller country, `time` is a time when call start (timestamp) and `duration` is a call duration in milliseconds. 
