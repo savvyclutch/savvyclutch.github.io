@@ -217,9 +217,10 @@ jar {
 
 As you can see there are two custom tasks - `cucumber` and `jar`.  First one runs cucumber tests and the second one compiles the source to the production jar-file.
 Now we can build the image:
-> docker build -t bdd_hadoop .
 
-Time to build processing application. Let’s create a directory structure: src > main > java > com > processing and add a file CallStream.java with content:
+    $ docker build -t bdd_hadoop .
+
+Time to build processing application. Let’s create a directory structure: `src > main > java > com > processing` and add a file CallStream.java with content:
 
 {% highlight java %}
 package com.processing;
