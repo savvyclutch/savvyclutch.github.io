@@ -30,6 +30,7 @@ Assume we have a lot of data about phone calls in a bunch of files. File contain
 Where `id` is a call unique id, `country` is a caller country, `time` is a time when call started (timestamp) and `duration` is a call duration in milliseconds. 
 
 For example: 
+
 ```
 0000,UA,1433998201,60000  
 
