@@ -20,7 +20,7 @@ but at the same time we allow to use regular file systems on developer machines 
 
 As any other piece of software it should be tested before using in production, especially because of high cost of logical mistakes in processing a lot amount of data. 
 Unfortunately there are no much information about BDD testing of Hadoop and Hive jobs. 
-So I decided to write how we do it in our Cascading project here, in Intelliarts.
+So I decided to write how we do it in our Cascading project here, in [Intelliarts](http://intelliarts.com/).
 
 <!-- more -->
 
@@ -49,11 +49,11 @@ id	country	time	duration
 
 And, we want to be sure that we did not make any mistakes during implementation, so we want to test the results. 
 What we will use:  
-* Hadoop + Cascading for data processing
-* Gradle for build management
-* Cucumber for tests
-* Chunk Templates  https://github.com/tomj74/chunk-templates for test data fixture generation
-* Docker for environment isolation
+* [Hadoop](http://hadoop.apache.org/) + [Cascading](http://www.cascading.org/) for data processing
+* [Gradle](https://gradle.org/) for build management
+* [Cucumber](https://cucumber.io/) for tests
+* [Chunk Templates](https://github.com/tomj74/chunk-templates) for test data fixture generation
+* [Docker](https://www.docker.com/) for environment isolation
 
 First of all we should isolate our testing environment and make it portable between dev machines and CI. We use Docker for this propose. 
 Inside the container we will:
