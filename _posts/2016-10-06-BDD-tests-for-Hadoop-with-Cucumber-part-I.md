@@ -53,6 +53,7 @@ id	country	time	duration
 And, we want to be sure that we did not make any mistakes during implementation, so we want to test the results. 
 What we will use:  
 
+
 * [Hadoop](http://hadoop.apache.org/) + [Cascading](http://www.cascading.org/) for data processing
 * [Gradle](https://gradle.org/) for build management
 * [Cucumber](https://cucumber.io/) for tests
@@ -61,6 +62,7 @@ What we will use:
 
 First of all we should isolate our testing environment and make it portable between dev machines and CI. We use Docker for this propose. 
 Inside the container we will:
+
 
 * Install Java
 * Install Hadoop
