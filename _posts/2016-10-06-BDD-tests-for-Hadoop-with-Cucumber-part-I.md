@@ -31,15 +31,12 @@ Where `id` is a call unique id, `country` is a caller country, `time` is a time 
 
 For example: 
 
-```
+{% highlight %}
 0000,UA,1433998201,60000  
-
 0001,US,1433998201,30000  
-
 0001,GB,1433998301,30000  
-
 ...
-```
+{% endhighlight %}
 
 # What we want to do?
 
