@@ -3,7 +3,7 @@ title: BDD tests for Hadoop with Cucumber. Part I
 description: "Tutorial how to create behaviour tests for Hadoop application with Cucumber. Part I: introduction and environment"
 layout: post
 author: bogdan
-tags: [bog data, java, hadoop, qa]
+tags: [big data, java, hadoop, qa]
 modified: 2016-10-07
 image:
     feature: posts/bdd_test_hadoop/title.jpg
