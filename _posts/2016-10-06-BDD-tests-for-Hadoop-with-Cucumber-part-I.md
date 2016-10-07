@@ -310,7 +310,7 @@ public class CallStream {
 
 Let’s try to build jar file:
 
-> docker run --rm bdd_hadoop gradle jar
+    $ docker run --rm bdd_hadoop gradle jar
 
 Now we need to create some acceptance tests. This will be in the the Part II.
 
