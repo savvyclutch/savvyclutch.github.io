@@ -22,7 +22,7 @@ and, as a side effect, we get document features and scenarios in human-readable 
 
 Our application should sort the data to the different folders regarding to caller countries, so let’s check it. 
 
-To do that we need to create folders for cucumber ‘features’:
+To do that we need to create folders for cucumber features:
 
 `src -> test -> resources -> features -> callstream`
 
@@ -93,7 +93,7 @@ Feature: CallStream normal data folder structure
 
 It’s important to wrote these steps before implementation, so we will not limit our mind with details of our tests implementation. 
 After creation of scenario, we should create implementation of each step of the scenario. 
-Implementation for steps lives in src -> java -> com -> steps folder. 
+Implementation for steps lives in `src -> java -> com -> steps` folder. 
 For our callstream feature we should create `callstream` folder  and add `FolderStructureSteps.java` into it. 
 Implementation of steps looks like that (I will not provide whole class here, it’s too large, and it’s not necessary to provide it here. 
 You can take a look in [article repository](https://github.com/savvyclutch/bdd_test_hadoop) for more)  :
