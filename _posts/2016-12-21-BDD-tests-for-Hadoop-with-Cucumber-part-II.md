@@ -123,7 +123,9 @@ So, it is pretty simple - we match step string to the java regular expression in
 {#}
 ```
 
-As you can see we use default values for fields, which keep our scenarios in Gherkin clean and readable.
+As you can see we use default values for fields, which keep our scenarios in Gherkin clean and readable.  
+
+Now you can extend these test and include output content checks or other important things. 
  
 Full code of the project you can find here: https://github.com/savvyclutch/bdd_test_hadoop
 
