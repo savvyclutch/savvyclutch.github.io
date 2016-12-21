@@ -12,7 +12,7 @@ image:
 
 In [previous part](http://www.savvyclutch.com/BDD-tests-for-Hadoop-with-Cucumber-part-I/) we have created the application to process the data and docker container to isolate testing environment.
    
-In this part we will create tests using Cucumber for Java and Gherkin.
+In this part we will create tests using [Cucumber for Java](https://cucumber.io/docs/reference/jvm) and [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin).
 
 Acceptance tests, usually, check the normal behaviour of application - we want to be sure that the app do what is designed to do.  
 Gherkin is the great way to create acceptance tests - because it allows to concentrate on what we are going to do instead of how we do it, 
@@ -31,60 +31,65 @@ Lets create a new file `folder_structure.feature` for the feature inside `callst
 At this point we don’t check the output data files format, only the folders structure.  
 To clarify that we should create understandable and clear feature description in terms of Gherkin:
 
-```
+{% highlight gherkin %}
 Feature: CallStream normal data folder structure
   Check is CallStream job creates the correct file/directory structure
   for the collected callstream data
-```
+{% endhighlight %}
 
 Now we can write first ‘happy case’ scenario:
 
-```
+{% highlight gherkin %}
   Scenario: processing data from one user from UA
-```
+  
+{% endhighlight %}
 
 Assume we have an input data file with one caller from Ukraine:
 
-```
+{% highlight gherkin %}
     Given a file with theme calls_log containing the following lines
       | country |
       | UA      |
-```
+{% endhighlight %}
 
 I don’t include other data fields, because we will use default ones. 
 Then we should run the processing job. 
 
-```
+{% highlight gherkin %}
     When I run the CallStream job
-```
+{% endhighlight %}
 
 And check that job create the correct folder structure:
 
-```
-    Then the following directory structure should be created:
+{% highlight gherkin %}
+    Then the following directory structure should be created
       | UA/ |
-```
+{% endhighlight %}
 
 And, of course, it should contain file with processed data:
 
-```
-    And folder 'UA/' should contain following files:
+{% highlight gherkin %}
+    And folder 'UA/' should contain following files
       | part-00000-00000 |
-```
+{% endhighlight %}
 
 And, in summary:
 
-```
+{% highlight gherkin %}
+Feature: CallStream normal data folder structure
+  Check is CallStream job creates the correct file/directory structure
+  for the collected callstream data
+  
   Scenario: processing data from one user from UA
     Given a file with theme calls_log containing the following lines
       | country |
       | UA      |
     When I run the CallStream job
-    Then the following directory structure should be created:
+    Then the following directory structure should be created
       | UA/ |
-    And folder 'UA/' should contain following files:
+    And folder 'UA/' should contain following files
       | part-00000-00000 |
-```
+{% endhighlight %}
 
 It’s important to wrote these steps before implementation, so we will not limit our mind with details of our tests implementation. 
 After creation of scenario, we should create implementation of each step of the scenario. 
@@ -93,7 +98,7 @@ For our callstream feature we should create `callstream` folder  and add `Folder
 Implementation of steps looks like that (I will not provide whole class here, it’s too large, and it’s not necessary to provide it here. 
 You can take a look in [article repository](https://github.com/savvyclutch/bdd_test_hadoop) for more)  :
 
-```
+{% highlight java %}
 public class FolderStructureSteps {
 
     private IOPath ioPath;
@@ -113,13 +118,14 @@ public class FolderStructureSteps {
         this.ioPath.input_path = writeDataToFile("data.dat", lines.toString().getBytes());
     }
 ...
-```
+{% endhighlight %}
 
 So, it is pretty simple - we match step string to the java regular expression in give/when/then annotations and wrote step implementation. 
 For data fixture generation we use simple template generator  `Chunk Templates`. 
 It uses `themes` folder for templates, so we habe to create folder in `themes` in test resources and add `calls_log.chtml` template with content:
 
-```
+{% highlight django %}
+{% raw %}
 {#lines}
 {% loop in $lines as $line_parameters%}{% include #single_line_snippet %}{% endloop %}
 {#}
@@ -127,12 +133,13 @@ It uses `themes` folder for templates, so we habe to create folder in `themes` i
 {#single_line_snippet}
 {$line_parameters.id:0000},{$line_parameters.country:UA},{$line_parameters.time:1433998201},{$line_parameters.duration:60000}
 {#}
-```
+{% endraw %}
+{% endhighlight %}
 
 As you can see we use default values for fields, which keep our scenarios in Gherkin clean and readable.  
 
 Now we have a basic test structure for acceptance tests and everyone can extend the test suite and include output content checks or other important things. 
  
-Full code of the project you can find here: https://github.com/savvyclutch/bdd_test_hadoop
+Full code of the project you can find here: [https://github.com/savvyclutch/bdd_test_hadoop](https://github.com/savvyclutch/bdd_test_hadoop)
 
 
