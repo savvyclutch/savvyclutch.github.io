@@ -4,7 +4,7 @@ description: "Tutorial how to create behaviour tests for Hadoop application with
 layout: post
 author: bogdan
 tags: [bog data, java, hadoop, qa]
-modified: 2016-10-07
+modified: 2016-12-21
 image:
     feature: posts/bdd_test_hadoop/title.jpg
     
@@ -14,19 +14,19 @@ In [previous part](http://www.savvyclutch.com/BDD-tests-for-Hadoop-with-Cucumber
    
 In this part we will create tests using Cucumber for Java and Gherkin.
 
-Acceptance tests, usually, check the normal behaviour of application - we want to be sure that app do what it design to do.  
-Gherkin is the great way to create acceptance tests - because it allow to concentrate on what we a going to do instead of how we do it, 
-and, as side effect, we have documented features and scenarios in human-readable format which is very helpful, especially for new team members.
+Acceptance tests, usually, check the normal behaviour of application - we want to be sure that the app do what is designed to do.  
+Gherkin is the great way to create acceptance tests - because it allows to concentrate on what we are going to do instead of how we do it, 
+and, as a side effect, we get document features and scenarios in human-readable format which is very helpful, especially for new team members.
 
 <!-- more -->
 
 Our application should sort the data to the different folders regarding to caller countries, so let’s check it. 
 
-Do do that we need to create folders for cucumber ‘features’:
+To do that we need to create folders for cucumber ‘features’:
 
 `src -> test -> resources -> features -> callstream`
 
-Lets create new file `folder_structure.feature` for feature inside `callstream` folder.
+Lets create a new file `folder_structure.feature` for the feature inside `callstream` folder.
 
 At this point we don’t check the output data files format, only the folders structure.  
 To clarify that we should create understandable and clear feature description in terms of Gherkin:
@@ -43,7 +43,7 @@ Now we can write first ‘happy case’ scenario:
   Scenario: processing data from one user from UA
 ```
 
-Assume we have input data file with one caller from Ukraine:
+Assume we have an input data file with one caller from Ukraine:
 
 ```
     Given a file with theme calls_log containing the following lines
@@ -51,7 +51,7 @@ Assume we have input data file with one caller from Ukraine:
       | UA      |
 ```
 
-I’ve don’t include other data fields, because we will use default ones. 
+I don’t include other data fields, because we will use default ones. 
 Then we should run the processing job. 
 
 ```
@@ -87,7 +87,11 @@ And, in summary:
 ```
 
 It’s important to wrote these steps before implementation, so we will not limit our mind with details of our tests implementation. 
-After creation of scenario, we should create implementation of each step of scenario. Implementation for steps lives in src -> java -> com -> steps folder. For our callstream feature we should create `callstream` folder  and add `FolderStructureSteps.java` into it. Implementation of steps looks like that (I will not provide whole class here, it’s too large, and it’s not necessary to provide it here. You can take a look in article repository for more)  :
+After creation of scenario, we should create implementation of each step of the scenario. 
+Implementation for steps lives in src -> java -> com -> steps folder. 
+For our callstream feature we should create `callstream` folder  and add `FolderStructureSteps.java` into it. 
+Implementation of steps looks like that (I will not provide whole class here, it’s too large, and it’s not necessary to provide it here. 
+You can take a look in [article repository](https://github.com/savvyclutch/bdd_test_hadoop) for more)  :
 
 ```
 public class FolderStructureSteps {
@@ -111,7 +115,9 @@ public class FolderStructureSteps {
 ...
 ```
 
-So, it is pretty simple - we match step string to the java regular expression in give/when/then annotations and wrote step implementation. For data fixture generation we use simple template generator  `Chunk Templates`. It uses `themes` folder for templates, so we should create folder in `themes` in test resources and add `calls_log.chtml` template with content:
+So, it is pretty simple - we match step string to the java regular expression in give/when/then annotations and wrote step implementation. 
+For data fixture generation we use simple template generator  `Chunk Templates`. 
+It uses `themes` folder for templates, so we habe to create folder in `themes` in test resources and add `calls_log.chtml` template with content:
 
 ```
 {#lines}
@@ -125,7 +131,7 @@ So, it is pretty simple - we match step string to the java regular expression in
 
 As you can see we use default values for fields, which keep our scenarios in Gherkin clean and readable.  
 
-Now you can extend these test and include output content checks or other important things. 
+Now we have the basic testing structure for acceptance tests and everyone can extend test suite and include output content checks or other important things. 
  
 Full code of the project you can find here: https://github.com/savvyclutch/bdd_test_hadoop
 
