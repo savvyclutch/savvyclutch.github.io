@@ -131,7 +131,7 @@ It uses `themes` folder for templates, so we habe to create folder in `themes` i
 
 As you can see we use default values for fields, which keep our scenarios in Gherkin clean and readable.  
 
-Now we have the basic testing structure for acceptance tests and everyone can extend test suite and include output content checks or other important things. 
+Now we have a basic test structure for acceptance tests and everyone can extend the test suite and include output content checks or other important things. 
  
 Full code of the project you can find here: https://github.com/savvyclutch/bdd_test_hadoop
 
