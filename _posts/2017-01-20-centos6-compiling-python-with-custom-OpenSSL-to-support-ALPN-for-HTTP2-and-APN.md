@@ -52,7 +52,7 @@ export LDFLAGS="-L/usr/local/lib/ -L/usr/local/lib64/"
 make & make install
 ```
 
-Important: ensure all paths are correct
+**Important**: ensure all paths are correct
 At this point a good sign is not to have `pip` related errors.
 
 Now let's check ssl version.
@@ -86,9 +86,9 @@ Now you can install `pyopenssl`, `hyper` using `pip3`, or create a virtual env a
 
 Now after some coding you actually can try to send `APN`.
 
-Notes:
+**Notes**:
 Prior to `pyopenssl` you may need `ibffi` `libffi-devel` packages.
 
-Additional:
+**Additional**:
 There is a way to compile NGINX to serve as HTTP/2 server under CentOS6, check this script: https://gist.github.com/kennwhite/6b6250e635c45c92a118a7a5cdc052c6
 On stack overflow for Python 3.4: http://stackoverflow.com/questions/23548188/how-do-i-compile-python-3-4-with-custom-openssl
