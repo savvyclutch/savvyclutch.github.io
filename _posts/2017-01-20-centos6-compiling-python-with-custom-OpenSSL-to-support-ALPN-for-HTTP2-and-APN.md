@@ -2,7 +2,7 @@
 title: Allow to send HTTP/2 requests to APNS on CentOS6 and Python3.5.
 description: "Describes how to compile python with custom openssl package to allow issuing HTTP/2 requests to Apple Push Notifications Service"
 layout: post
-author: akozlovskyi
+author: andrii
 tags: [akozlovskyi, python, eh6, openssl, apn, http2]
 modified: 2017-01-20
     
@@ -81,7 +81,6 @@ Now you can install `pyopenssl`, `hyper` using `pip3`, or create a virtual env a
 
 ```
 /usr/local/bin/python3 /usr/local/bin/pip3 install pyopenssl hyper
-
 ```
 
 Now after some coding you actually can try to send `APN`.
