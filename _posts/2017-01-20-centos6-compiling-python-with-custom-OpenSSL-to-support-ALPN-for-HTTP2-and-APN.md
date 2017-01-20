@@ -76,6 +76,7 @@ You can try:
 1. Ensure Environment variables were set correctly
 2. Ensure app path are correct.
 3. According to different sources: You may or may not need to install `openssl-devel` package before compiling Python. (I didn't)
+4. Recompile an reinstall python
 
 Now you can install `pyopenssl`, `hyper` using `pip3`, or create a virtual env and install there
 
