@@ -5,6 +5,8 @@ layout: post
 author: andrii
 tags: [akozlovskyi, python, eh6, openssl, apn, http2]
 modified: 2017-01-20
+image:
+    feature: posts/cent_os6_openssl/title.jpg
     
 ---
 
