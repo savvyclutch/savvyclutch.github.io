@@ -97,5 +97,5 @@ Now after some coding you actually can try to send `APN`.
 Prior to `pyopenssl` you may need `ibffi` `libffi-devel` packages.
 
 **Additional**:
-There is a way to compile NGINX to serve as HTTP/2 server under CentOS6, check this script: https://gist.github.com/kennwhite/6b6250e635c45c92a118a7a5cdc052c6
-On stack overflow for Python 3.4: http://stackoverflow.com/questions/23548188/how-do-i-compile-python-3-4-with-custom-openssl
+There is a way to compile NGINX to serve as HTTP/2 server under CentOS6, check this script: [script](https://gist.github.com/kennwhite/6b6250e635c45c92a118a7a5cdc052c6)
+On stack overflow for Python 3.4: [How do I compile python 3.4 withcustom openssl](http://stackoverflow.com/questions/23548188/how-do-i-compile-python-3-4-with-custom-openssl)
