@@ -20,6 +20,8 @@ Also we need to compile Python specifying custom openssl library.
 
 Let'd do it... 
 
+<!-- more -->
+
 ## Install OpenSSL
 
 ### Download and unpack sources:
