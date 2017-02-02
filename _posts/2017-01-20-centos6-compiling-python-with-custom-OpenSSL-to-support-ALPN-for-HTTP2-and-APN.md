@@ -24,12 +24,14 @@ Let'd do it...
 
 ## Install OpenSSL
 
-### Download and unpack sources:
+Download and unpack sources:
+
 ```
 cd /usr/local/src/
 wget https://openssl.org/source/openssl-1.0.2j.tar.gz && tar -xzf openssl-1.0.2j.tar.gz
 ```
-### Configure and install
+
+Configure and install
 
 ```
 cd openssl-1.0.2j
@@ -38,14 +40,15 @@ make & make install
 ```
 
 ## Install Python:
-### Download and unpack sources:
+
+Download and unpack sources:
 
 ```
 cd /usr/local/src/
 wget https://www.python.org/ftp/python/3.5.3/Python-3.5.3.tgz && tar -xzf Python-3.5.3.tgz
 ```
 
-### Configure and install
+Configure and install
 
 ```
 cd Python-3.5.3
