@@ -102,15 +102,23 @@ Unit tests is about to keep *code quality*, but they do little help with the ove
 
 ## Do you have an Acceptance Person?
 
+Job is done, when Man Who Accepts The Job are said it to. You should have person for that, and it's not necessary it should be customer or owner in a terms of SCRUM (which is the best option here) - it could be QA or other developer in your team, but not who participated to the particular feature implementation.
+
 ## Do you do code reviews?
 
 Code review is extremely useful technique for knowledge sharing and team education and application quality support, [if you are doing it right](http://www.savvyclutch.com/Make-Code-Review-Useful-Again/). It’s impossible to keep team code and engineering decisions understandable, organized and with a minimum architecture issues without code review.
 
 ## Do you have team with 2 pizzas size max?
 
+The two pizza rule is often credited to Jeff Bezos, founder and CEO of Amazon. The idea is to [keep team communication on useful level without the big impact on each team member focus and stress level](http://blog.idonethis.com/two-pizza-team/). 
+
 ## Do you have less than 2 pizzas meetings?
 
+Most meetings are a waste of time, especially if a lot people are involved to it. To keep meetings useful, they should be short and have a secific goal. Which will be impossible, if more than 6-8 people are participated. 
+
 ## Do you have a primary communication channel?
+
+Should be one, and only one primary communication channel between team members. In these days we have a lot communication application and chat services, and it's very easy to create a mess. You can have some kind of "official" channel (mail, for example), or emergency (SMS/calls) but everything should be in the primary communication channel of choice too. 
 
 ## Do you have a library?
 
@@ -122,4 +130,4 @@ Leave things better than you found it - a good advice to keep project healthy. T
 
 ## Do you have a person that advocates rules from above?
 
-
+If nobody are not became a pain in the ass the laziness will win.
