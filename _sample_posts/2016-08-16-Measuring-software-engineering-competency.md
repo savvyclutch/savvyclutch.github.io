@@ -30,7 +30,7 @@ Let's go.
 
 1. Do you have Continuous Integration?
 
-2. Do you have one-step deployment?
+2. Do you have one-step deployment (artifact build)?
 
 3. Do you use tasks and errors management system(s)?
 
@@ -78,7 +78,7 @@ No CI - no automated tests - no quality - bad job. You may have tests but withou
 
 ## Do you have Automatic Deployment?
 
-Importance of a simple, robust, and safe deployment process is one of the most underestimated thing in software development. It may looks we can get away with not having automated deployment just for now and do it later. But when the later becomes today we have a mess of ad-hoc scripts, checklists, and notes about things that have to be done manually. This mess causes mistakes, very often, on production. 
+Importance of a simple, robust, and safe deployment process is one of the most underestimated thing in software development. It may looks we can get away with not having automated deployment just for now and do it later. But when the later becomes today we have a mess of ad-hoc scripts, checklists, and notes about things that have to be done manually. This mess causes mistakes, very often, on production. The same is true for building artifacts - those builds should be automatically versinificated and has possibility to be delivered by one step. 
 
 ## Do you use tasks and errors management system?
 
@@ -95,13 +95,16 @@ Short process, like weeks or two, keeps team focused on a small and achievable g
 ## Do you have unit tests?
 
 We don't know the better way to make sure that code does what it's supposed to, then to have another code that runs it and check results.
- 
 
 ## Do you have automated end-to-end tests in DSL?
+
+Unit tests is about to keep code quolity, but they do little help with the overall application quality. Creatin end-to-end tests in DSL achive at  least two advanteges: you will be sure that application behave as expected and DSL will give you human-frendly documentation about high-level logic that cover your particular domain. It's not, actually, necessary to involve the customer or the tester to process of creating these tests, but it will be much easier to explain application behaviour and limitations to them when you have it.
 
 ## Do you have an Acceptance Person?
 
 ## Do you do code reviews?
+
+Code review is extremely useful technique for knowledge sharing and team education and application quality support, [if you are doing it right](http://www.savvyclutch.com/Make-Code-Review-Useful-Again/). It’s impossible to keep team code organized, understandable and with a minimum architecture issues without code review.    
 
 ## Do you have team with 2 pizzas size max?
 
@@ -118,4 +121,5 @@ Library does not guaranty that team members will read the books from it, but it 
 Leave things better than you found it - a good advice to keep project healthy. This does not mean you should change everything you touch, but if you see small issue, that can be easily fixed or improved -  do it.
 
 ## Do you have a person that advocates rules from above?
+
 
