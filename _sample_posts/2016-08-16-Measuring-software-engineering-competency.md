@@ -98,7 +98,7 @@ We don't know the better way to make sure that code does what it's supposed to, 
 
 ## Do you have automated end-to-end tests in DSL?
 
-Unit tests is about to keep code quolity, but they do little help with the overall application quality. Creatin end-to-end tests in DSL achive at  least two advanteges: you will be sure that application behave as expected and DSL will give you human-frendly documentation about high-level logic that cover your particular domain. It's not, actually, necessary to involve the customer or the tester to process of creating these tests, but it will be much easier to explain application behaviour and limitations to them when you have it.
+Unit tests is about to keep *code quality*, but they do little help with the overall *application quality*. It doesn't matter how good is your code if application doesn't do what it supposed to do. Creating end-to-end tests in DSL achieve at least two advantages: you will be sure that application behave as expected and DSL will give you human-friendly documentation about high-level logic that cover your particular domain. It's not, actually, necessary to involve the customer or the tester to process of creating these tests, but it will be much easier to explain application behaviour and limitations to them when you have it.
 
 ## Do you have an Acceptance Person?
 
