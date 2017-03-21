@@ -104,7 +104,7 @@ Unit tests is about to keep *code quality*, but they do little help with the ove
 
 ## Do you do code reviews?
 
-Code review is extremely useful technique for knowledge sharing and team education and application quality support, [if you are doing it right](http://www.savvyclutch.com/Make-Code-Review-Useful-Again/). It’s impossible to keep team code organized, understandable and with a minimum architecture issues without code review.    
+Code review is extremely useful technique for knowledge sharing and team education and application quality support, [if you are doing it right](http://www.savvyclutch.com/Make-Code-Review-Useful-Again/). It’s impossible to keep team code and engineering decisions understandable, organized and with a minimum architecture issues without code review.
 
 ## Do you have team with 2 pizzas size max?
 
