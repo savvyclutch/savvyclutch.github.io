@@ -98,15 +98,15 @@ We don't know the better way to make sure that code does what it's supposed to, 
 
 ## Do you have automated end-to-end tests in DSL?
 
-Unit tests is about to keep *code quality*, but they do little help with the overall *application quality*. It doesn't matter how good is your code if application doesn't do what it supposed to do. Creating end-to-end tests in DSL achieve at least two advantages: you will be sure that application behave as expected and DSL will give you human-friendly documentation about high-level logic that cover your particular domain. It's not, actually, necessary to involve the customer or the tester to process of creating these tests, but it will be much easier to explain application behaviour and limitations to them when you have it.
+Unit tests is about keeping up *code quality*, but they do little help with the overall *application quality*. It doesn't matter how good is your code if an application doesn't do what it supposed to do. Creating end-to-end tests in DSL gives at least two advantages: you will be sure that application behaves as expected and DSL will give you a human-friendly documentation about a high-level logic that cover your particular domain. It's not, actually, necessary to involve a customer and a tester to the process of creating these tests, but it will be much easier to explain application behaviour and limitations to them when you have it.
 
 ## Do you have an Acceptance Person?
 
-Job is done, when Man Who Accepts The Job are said it to. You should have person for that, and it's not necessary it should be customer or owner in a terms of SCRUM (which is the best option here) - it could be QA or other developer in your team, but not who participated to the particular feature implementation.
+Job is done, when Man Who Accepts The Job says so. You should have person for that, and it's not necessary it should be customer or owner in a terms of SCRUM (which is the best option here) - it could be QA or other developer in your team, but not who participated in a particular feature implementation.
 
 ## Do you do code reviews?
 
-Code review is extremely useful technique for knowledge sharing and team education and application quality support, [if you are doing it right](http://www.savvyclutch.com/Make-Code-Review-Useful-Again/). It’s impossible to keep team code and engineering decisions understandable, organized and with a minimum architecture issues without code review.
+Code review is an extremely useful technique for knowledge sharing, team education, and application quality support, [if you are doing it right](http://www.savvyclutch.com/Make-Code-Review-Useful-Again/). It’s impossible to keep team code and engineering decisions understandable, organized and with a minimum architecture issues without code review.
 
 ## Do you have team with 2 pizzas size max?
 
@@ -122,7 +122,7 @@ Should be one, and only one primary communication channel between team members. 
 
 ## Do you have a library?
 
-Library does not guaranty that team members will read the books from it, but it should be available if they want to start. When people can talk use the same terminology and with the similar background of knowledge it makes discussion more productive.  
+Library does not guaranty that team members will read the books from it, but it should be available if they want to start. When people can talk using the same terminology and with the similar background of knowledge it makes discussion more productive.  
 
 ## Do you stick to the "Boy Scout Rule"?
 
@@ -130,4 +130,4 @@ Leave things better than you found it - a good advice to keep project healthy. T
 
 ## Do you have a person that advocates rules from above?
 
-If nobody are not became a pain in the ass the laziness will win.
+If nobody becomes a pain in the ass the laziness will win.
