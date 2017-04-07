@@ -1,7 +1,8 @@
 ---
 title: Measuring software engineering competency
 layout: post
-author: [sergii, bogdan]
+description: "Measuring... something that's neither easy nor simple. But let's try!"
+author: bogdan, sergii
 permalink: /measuring-software-engineering-competency/
 source-id: 1OWEfPgEhJI5Lb4Eq5Llcj7UH2R1PC7ONGYjRcLc61oQ
 published: true
@@ -14,21 +15,22 @@ by Bogdan Frankovskyi and Sergii Naumenko
 
 # OVERVIEW & PURPOSE
 
-As is well known, "if you can't measure it, you can’t ~~measure~~ manage it." Of course, it’s mostly advice, than a rule, but there's a certain common sense of measuring. At least we should try measure to see the progress. Measuring competency and quality is not simple, because there are no specific rules, or attributes. But there are always some things that have to be done to keep quality on a high level in the long run.  
-
-Sixteen years ago [Joel Spolsky](http://www.joelonsoftware.com/) tried to build ф simple checklist for a team to rate its quality  in his [The Joel Test](http://www.joelonsoftware.com/articles/fog0000000043.html). Much time has passed since the publication of this test, so we decide to review it, and try to use it to improve our quality and work efficiency. 
-
-This document is an attempt to revised  and extend it from just a test to a set of rules that allow to measure and improve our engineering competency. 
+Why do we want to measure our competency? Well... because we want to improve. And we have to! The world is rapidly changing: tools, technologies, paradigms, concepts, processes, competitors, crises. We must run to stay in business. We must deliver the product, maintain the quality, meet the budget...
+But competency and quality measuring is tough! We don't have rules to assess them. [Joel Spolsky](http://www.joelonsoftware.com/) tried to build a simple checklist for a team to rate its quality in his famous [The Joel Test](http://www.joelonsoftware.com/articles/fog0000000043.html), but it was sixteen years ago. So let's stand on the shoulders of giants, and revise it from just the test to a set of rules that can guide us for the better software engineering competency.  
+ 
 
 # HOW TO USE IT
 
-The list of rules is splitted in two parts: must have and good to have. Each rule is a Yes/No question. "Yes" answer to a “Must” rule gives you 0 points, “no” answer gives you -1 point. “Yes” answer to a “Good” rule gives you 1 point, “no” answer gives you 0 points. The resulting sum of points is your Engineering Competency Score when negative number means that either your competency is questionable or is going to degrade over the time.  0 score means that you follow professional discipline and capable of producing good quality product. Positive number says that you increase your competency and grow as professional.
 
-# MUST RULES
+The list of rules is splitted in two parts: *Obligations* and *Merits*. Each rule is a Yes/No question. "Yes" answer to an "Obligation" gives you 0 points, “No” answer gives you -1 point. “Yes” answer to a “Merit” rulegives you 1 point, “No” answer gives you 0 points. You've got the idea, right? Having merits is good, not fulfilling obligations is bad.
+The resulting sum of points is your, let's say, Engineering Competency Score when negative number means that either your competency is questionable or is going to degrade over the time. 0 score means that you follow the professional discipline and capable of producing good quality product. Positive number says that you increase your competency and grow as professional.
+Let's go.
+
+# OBLIGATIONS
 
 1. Do you have Continuous Integration?
 
-2. Do you have one-step deployment?
+2. Do you have one-step deployment (artifact build)?
 
 3. Do you use tasks and errors management system(s)?
 
@@ -36,11 +38,11 @@ The list of rules is splitted in two parts: must have and good to have. Each rul
 
 5. Do you have short iterational process?
 
-6. Do you have unit tests with at least 50% coverage?
+6. Do you have unit tests with at least 50% (and growing) coverage?
 
 7. Do you have automated end-to-end tests in DSL?
 
-8. Do you have an Acceptance Person?
+8. Do you have an Acceptance Person in your team?
 
 9. Do you do code reviews?
 
@@ -56,7 +58,7 @@ The list of rules is splitted in two parts: must have and good to have. Each rul
 
 15. Do you have a person that advocates rules from above?
 
-# GOOD RULES
+# MERITS
 
 1. Do you contribute to Open Source?
 
@@ -72,43 +74,55 @@ Now let's elaborate a little bit on the items from this list.
 
 ## Do you have Continuous Integration?
 
-CI allow to measure the code health by ran the unit tests on any commit, show the numbers of tests and code coverage, automatically build it and add possibility to extend to automatic deployment. All of this things help developers to be more confident in project quality and code lifecycle stability because everyone can see build results, what was changed and when. 
+No CI - no automated tests - no quality - bad job. You may have tests but without CI they are useless, because sooner or later someone will forget/postpone fixing a broken test, push code without any test coverage, etc. A system that runs the tests regularly, notifies about errors, shows test coverage is a must.
 
-## Do you have one-step deployment?
+## Do you have Automatic Deployment?
 
-Complex, complicated deployment process, with any manual steps make this process dangerous - just because deployment usually means moving things to the production stage and people make mistakes. On production this mistakes can be very expensive.  That's why deployment should be simple and safe and that’s why it should be fully automatic and  include manual actions as little as possible.
+Importance of a simple, robust, and safe deployment process is one of the most underestimated thing in software development. It may looks we can get away with not having automated deployment just for now and do it later. But when the later becomes today we have a mess of ad-hoc scripts, checklists, and notes about things that have to be done manually. This mess causes mistakes, very often, on production. The same is true for building artifacts - those builds should be automatically versinificated and has possibility to be delivered by one step. 
 
-## Do you use tasks and errors management system(s)?
+## Do you use tasks and errors management system?
 
-This, obviously, need to track what's going on on project and guarantee you will not forget about defects or tasks which should be done. Doesn’t matter what it will be - Kanban board, online tools or something else, but you have to use something to keep yourself more organised and process more transparent for any team members. 
+We need to track what's going on on the project and guarantee that defects or tasks won't be forgotten or overlooked. It doesn’t matter what it is - whiteboard with stickers on it, online tools or something else, but we have to use something to keep things organised and the whole process more transparent for everybody. 
 
 ## Do you have daily status check-in meetings?
 
-Everyone in team should know what's going on in project to avoid miscommunication issues and distractions.
+Communication is important, keep everybody in the loop but do not bore them with details. 
 
 ## Do you have short iterational process?
 
-Short process, like weeks or two, keeps team focused on a small goals  which is always good for a quality.  
+Short process, like weeks or two, keeps team focused on a small and achievable goals.
 
-## Do you have unit tests with at least 50% coverage?
+## Do you have unit tests?
 
-Unit testing is important for a code quality because it helps developers to build more flexible code design and update/refactor the code without fear to break existing functionality. It's not necessary to get crazy and always keep code coverage 100% but code should be covered by unit tests at least in half.  
+We don't know the better way to make sure that code does what it's supposed to, then to have another code that runs it and check results.
 
 ## Do you have automated end-to-end tests in DSL?
 
+Unit tests is about keeping up *code quality*, but they do little help with the overall *application quality*. It doesn't matter how good is your code if an application doesn't do what it supposed to do. Creating end-to-end tests in DSL gives at least two advantages: you will be sure that application behaves as expected and DSL will give you a human-friendly documentation about a high-level logic that cover your particular domain. It's not, actually, necessary to involve a customer and a tester to the process of creating these tests, but it will be much easier to explain application behaviour and limitations to them when you have it.
+
 ## Do you have an Acceptance Person?
+
+Job is done, when Man Who Accepts The Job says so. You should have person for that, and it's not necessary it should be customer or owner in a terms of SCRUM (which is the best option here) - it could be QA or other developer in your team, but not who participated in a particular feature implementation.
 
 ## Do you do code reviews?
 
+Code review is an extremely useful technique for knowledge sharing, team education, and application quality support, [if you are doing it right](http://www.savvyclutch.com/Make-Code-Review-Useful-Again/). It’s impossible to keep team code and engineering decisions understandable, organized and with a minimum architecture issues without code review.
+
 ## Do you have team with 2 pizzas size max?
+
+The two pizza rule is often credited to Jeff Bezos, founder and CEO of Amazon. The idea is to [keep team communication on useful level without the big impact on each team member focus and stress level](http://blog.idonethis.com/two-pizza-team/). 
 
 ## Do you have less than 2 pizzas meetings?
 
+Most meetings are a waste of time, especially if a lot people are involved to it. To keep meetings useful, they should be short and have a secific goal. Which will be impossible, if more than 6-8 people are participated. 
+
 ## Do you have a primary communication channel?
+
+Should be one, and only one primary communication channel between team members. In these days we have a lot communication application and chat services, and it's very easy to create a mess. You can have some kind of "official" channel (mail, for example), or emergency (SMS/calls) but everything should be in the primary communication channel of choice too. 
 
 ## Do you have a library?
 
-Library does not guaranty that team members will read the books from it, but it should be available if they want to start. When people can talk use the same terminology and with the similar background of knowledge it makes discussion more productive.  
+Library does not guaranty that team members will read the books from it, but it should be available if they want to start. When people can talk using the same terminology and with the similar background of knowledge it makes discussion more productive.  
 
 ## Do you stick to the "Boy Scout Rule"?
 
@@ -116,3 +130,4 @@ Leave things better than you found it - a good advice to keep project healthy. T
 
 ## Do you have a person that advocates rules from above?
 
+If nobody becomes a pain in the ass the laziness will win.
