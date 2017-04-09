@@ -4,7 +4,7 @@
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
-  {% assign author = site.authors[page.author] %}
+  {% assign authors = page.author | split: ", " %}
   {% include head.html %}
 </head>
 
@@ -36,16 +36,10 @@
       </footer>
     </div><!-- /.entry-content -->
 
-    {% if author %}
+    {% for current_author in authors %}
+      {% assign author = site.authors[current_author] %}
       {% include author.html %}
-    {% endif %}
-
-    {% if authors %}
-      {% for author in page.authors %}
-        {% assign author = site.authors[author] %}
-        {% include author.html %}
-      {% endfor %}
-    {% endif %}
+    {% endfor %}
 
     {% if page.comments != false and site.disqus_shortname %}<section id="disqus_thread"></section><!-- /#disqus_thread -->{% endif %}
     {% if site.related_posts.size > 0 %}{% include read-more.html %}{% endif %}

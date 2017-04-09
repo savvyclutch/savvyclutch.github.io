@@ -2,7 +2,7 @@
 title: Measuring software engineering competency
 layout: post
 description: "Measuring... something that's neither easy nor simple. But let's try!"
-authors: [bogdan, sergii]
+authors: bogdan, sergii
 tags: [qa, agile, process]
 permalink: /measuring-software-engineering-competency/
 modified: 2017-04-09
