@@ -4,6 +4,7 @@ description: "Describes how to compile python with custom openssl package to all
 layout: post
 author: andrii
 tags: [akozlovskyi, python, eh6, openssl, apn, http2, devops]
+categories: [DevOps]
 modified: 2017-01-20
 image:
     feature: posts/cent_os6_openssl/title.jpg

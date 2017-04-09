@@ -4,7 +4,7 @@ layout: post
 description: "Measuring... something that's neither easy nor simple. But let's try!"
 author: bogdan, sergii
 tags: [qa, agile, process]
-categories: [process]
+categories: [Process]
 permalink: /measuring-software-engineering-competency/
 modified: 2017-04-09
 published: true
