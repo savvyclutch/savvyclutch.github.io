@@ -4,6 +4,7 @@ description: "A few tips on how to organize code review process in a most effect
 layout: post
 author: bogdan
 tags: [code review, agile, process]
+categories: [process]
 image:
     feature: posts/code_review/title.jpg
     

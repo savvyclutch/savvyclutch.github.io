@@ -4,6 +4,7 @@ title: Continuous deployment to AWS ECS from CircleCI
 description: "Tutorial, how to configure AWS ECS cluster, CircleCI and manage secrets during deployment"
 author: bogdan
 tags: [docker, aws ecs, circleci, devops]
+categories: [DevOps]
 image:
     feature: posts/aws_deploy/title.jpg
 

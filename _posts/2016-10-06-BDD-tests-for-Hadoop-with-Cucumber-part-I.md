@@ -4,6 +4,7 @@ description: "Tutorial how to create behaviour tests for Hadoop application with
 layout: post
 author: bogdan
 tags: [big data, java, hadoop, qa]
+categories: [QA]
 modified: 2016-10-07
 image:
     feature: posts/bdd_test_hadoop/title.jpg
