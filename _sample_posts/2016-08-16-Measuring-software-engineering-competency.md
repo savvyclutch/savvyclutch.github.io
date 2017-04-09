@@ -3,21 +3,20 @@ title: Measuring software engineering competency
 layout: post
 description: "Measuring... something that's neither easy nor simple. But let's try!"
 author: bogdan, sergii
+tags: [qa, agile, process]
 permalink: /measuring-software-engineering-competency/
-source-id: 1OWEfPgEhJI5Lb4Eq5Llcj7UH2R1PC7ONGYjRcLc61oQ
+modified: 2017-04-09
 published: true
+
+image:
+    feature: posts/measuring_competency/title.png
 ---
-![image alt text]({{ site.url }}/public/0sGIlVkcMs5sDfGFgISOA_img_0.jpg)
 
-MEASURING SOFTWARE ENGINEERING COMPETENCY
-
-by Bogdan Frankovskyi and Sergii Naumenko
-
-# OVERVIEW & PURPOSE
 
 Why do we want to measure our competency? Well... because we want to improve. And we have to! The world is rapidly changing: tools, technologies, paradigms, concepts, processes, competitors, crises. We must run to stay in business. We must deliver the product, maintain the quality, meet the budget...
 But competency and quality measuring is tough! We don't have rules to assess them. [Joel Spolsky](http://www.joelonsoftware.com/) tried to build a simple checklist for a team to rate its quality in his famous [The Joel Test](http://www.joelonsoftware.com/articles/fog0000000043.html), but it was sixteen years ago. So let's stand on the shoulders of giants, and revise it from just the test to a set of rules that can guide us for the better software engineering competency.  
  
+<!-- more -->
 
 # HOW TO USE IT
 
