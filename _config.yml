@@ -50,26 +50,26 @@ authors:
     gravatar: 096968a285ac70270237bc78e0bb57cb
     email: bogdan@savvyclutch.com
     site: http://savvyclutch.com
-    bio: "I'm Software Engeneer."
+    bio: "I'm Software Engineer."
 #    twitter: company
-#    github: hhattori
+    github: Ferroman
   sergii:
     name: Sergii Naumenko
     display_name: Sergii
 #    gravatar: 12e480a364a5c19214f99b4dfe9a11d5
-    bio: "I'm Software Engeneer at [Intelliarts](http://intelliarts.com/)."
+    bio: "I'm Software Engineer at [Intelliarts](http://intelliarts.com/)."
     email: sergii@savvyclutch.com
   andrii:
     name: Andrii Kozlovskyi
     display_name: Andrii
   #    gravatar: 12e480a364a5c19214f99b4dfe9a11d5
-    bio: "I'm Software Engeneer at [Intelliarts](http://intelliarts.com/)."
+    bio: "I'm Software Engineer at [Intelliarts](http://intelliarts.com/)."
     email: andrii@savvyclutch.com
   vova:
     name: Volodymyr Kelembet
     display_name: Volodymyr
   #    gravatar: 12e480a364a5c19214f99b4dfe9a11d5
-    bio: "I'm Software Engeneer at [Intelliarts](http://intelliarts.com/)."
+    bio: "I'm Software Engineer at [Intelliarts](http://intelliarts.com/)."
     email: vova@savvyclutch.com
 
 # Twitter account associated with the site if different from owner/author twitter account.
