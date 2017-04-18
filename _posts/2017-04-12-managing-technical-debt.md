@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Managing Technical Debt
-description: "Quite obvious plan to manage a technical debt."
+description: "The obvious plan how to manage technical debt."
 author: bogdan
 modified: 2014-12-24
 tags: [code review, agile, process, qa]
@@ -12,13 +12,14 @@ image:
 
 # WHAT IS “TECHNICAL DEBT”?
 
-Martin Fowler [has a great explanation](https://martinfowler.com/bliki/TechnicalDebt.html) of this term and the problem behind it.  Many startups and new projects use quick-and-dirty solutions to achieve their goals as soon as possible, which in some point makes project complicated, slow, hard to change or implement a new features and full of bugs. I want to talk about most usual issues and how manage most effectively from my point of view.
-Project with the big technical debt leading to make developers fear for changes. Any change can have unexpected effect and produce more bugs. And there is only one way to fearless development - it’s automated tests, which such projects usually don’t have. So technical debt is mostly about luck of control of the project quality.  There is other common issues in the project with big TD, but this is the most important one, and, what the worst thing here, very underestimated.
+Martin Fowler [has a great explanation](https://martinfowler.com/bliki/TechnicalDebt.html) of this term and the problem behind it.  Many startups and new projects use quick-and-dirty solutions to achieve their goals as soon as possible, which overcomplicates a project, slows it down, makes it hard to change or implement new features and full of bugs. I'd like to bring up the most common issues and how to manage them in the most effective way, from my point of view.
+A project with big technical debt leading to the fear of change. Any change can have unexpected effect and produce more bugs. And there is only one way to fearless development - it’s automated tests, which usually don’t exist on such projects. So technical debt is mostly about luck of control of the project quality. 
+There are other common issues on the projects with big TD, but this is the most important and, unfortunately, a heavily underestimated one.
  <!-- more -->
  
 # TL;DR: Plan
 1. **Create automatic backup for application users data.** We don’t want to corrupt user data.
-2. **Start using [commit strategy and workflow](http://nvie.com/posts/a-successful-git-branching-model/)** and make sure that everybody in a team understand it. There should be clear process to publish changes.
+2. **Start using [commit strategy and workflow](http://nvie.com/posts/a-successful-git-branching-model/)** and make sure that everybody in a team understands it. There should be a clear process for publishing changes.
 3. **Create/integrate a tool for application requirements management.** In these days some frameworks already have it: ruby bundler, npm etc. Also, OS requirements for testing/production can be managed using containerized solutions like Docker
 4. **Create/integrate a tool for configuration management.** Some frameworks also has this from-the-box, Rails, for example.
 5. **Choose the testing tools**
@@ -51,22 +52,23 @@ So, where is the technical debt most often accumulated? On a new project team us
 
 Let me describe each a little. 
 
-From my experience, the most destructive, hard to fix and influencing the speed of development thing is infrastructure. This including: application configuration management, application requirements management, dev environment, deployment process, testing infrastructure (local and CI) and commitment process. Without any of this the efficiency fall dramastically with no chance to become better. 
+From my experience, the most destructive, hard to fix and influencing the speed of development thing is infrastructure. 
+This includes: application configuration management, application requirements management, dev environment, deployment process, testing infrastructure (local and CI) and commitment process. Without any of this the efficiency fall dramastically with no chance to become better. 
 
-Without configuration management it’s very hard to not introduce bugs on production because of difference between local machines and production machines and this can cause critical issues for application users. 
+Without configuration management it’s very hard not to introduce bugs on production because of difference between local machines and production machines and this can cause critical issues for application users. 
 
-Without project requirements management impossible to create good deployment and onboarding process, so both can take a days or, sometimes, weeks. 
+Without project requirements management it's impossible to create good deployment and onboarding process, so both can take a days or, sometimes, weeks. 
 
-Without useful developer environment, developers will spend a lot of time trying to figure out is some particular issue are related to their local environment, or it’s a general issue; some thing can’t be run or tested on a local machine at all (for example delayed jobs, file storing in case when it’s configured to store on the third-party resources like S3, mail sending etc.); will be not able to reproduce bugs from other developers or production; it will be hard to implement configuration or new requirements without  breaking other team member processes; 
+Without useful developer environment, developers will spend a lot of time trying to figure out if the particular issue are related to their local environment, or it’s a general issue; some things can’t be run or tested on a local machine at all (for example delayed jobs, file storing in case when it’s configured to store on the third-party resources like S3, mail sending etc.); will not able to reproduce bugs from other developers or production; it will be hard to implement configuration or new requirements without  breaking other team member processes; 
 
-Without simple and understandable deployment process team will have a hard time on delivering the fixes and new features, and this impact a application users which is critical. Technical dept in this process usually very time-consuming risky and stressful.  
+Without simple and understandable deployment process team will have a hard time delivering the fixes and new features, and this can impact an application users which is critical. Technical dept in this process usually very time-consuming risky and stressful.  
 
-Without testing infrastructure team can’t create the tests. It’s not necessary to became crazy and move all resources to create tests for existing code, but developers have to has possibility to creating the tests when they can and run in a regular bases. Without tests developers can’t effectively refactor code or implement a new features without introducing new bugs, so they should do all manual testing which is very ineffective, time-consuming and bad for team morale. Having this infrastructure will give the opportunity to became project health better over the time. Without it this will likely never happen.
+Without testing infrastructure team can’t create the tests. It’s not necessary to become crazy and move all resources to create tests for existing code, but developers have to have a possibility to creating the tests when they can and run in a regular bases. Without tests developers can’t effectively refactor code or implement a new features without introducing new bugs, so they should do all manual testing which is very ineffective, time-consuming and bad for team morale. Having this infrastructure will give the opportunity to make project health better over the time. Without it this will likely never happen.
 
 So, fixing the infrastructure issues is the key to manage the technical debt.  
 
 Data backing - it a most important part to decrease the risk. There is no way to make a lot of changes without mistakes, so team should not fear that their mistakes will result in data loss or corruption, which is, probably, the worst thing that can happen. 
-Managing the TD in code is more straightforward. Some solutions already covered by the best practices of used languages, tools and frameworks. To identify the problem and engineer the solution are not very difficult, and with the proper testing risk can be minimal. Refactoring, test creation and code reviews should be permanent part of the development process.  
+Managing the TD in a code is more straightforward. Some solutions already covered by the best practices of used languages, tools and frameworks. It's not very difficult to identify the problem and engineer the solution, and with the proper testing risk can be minimal. Refactoring, test creation and code reviews should be permanent part of the development process.  
 One more thing, which, I believe,  is very important to successful reduce of TD. Technical debt does not grow overnight. Sometimes it takes a years before people start thinking about to do something with, and it’s usually because they didn’t saw the whole picture to the very end, and start looking at it when any change became taking weeks and bugs and complaints numbers growth exponentially. This often because of issues organization for tech team. Leads organize bugs/stories/requests/tasks independently into different lists/projects, which hide the real scope of work. To avoid this, team should collect all technical tasks, bugs and issues in the one list. It will be a big list, but it will show how are you really deal with existing Technical Debt and implement features stories in the same time. Keeping things in different lists/boards/projects only hide the real situation. Splitting them to the different project has sense only when the separate teams will work on them.  
 
 So, to summarize all of that:
