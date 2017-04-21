@@ -31,45 +31,58 @@ There are other common issues on the projects with big TD, but this is the most 
 11. **Start [doing code reviews](http://www.savvyclutch.com/process/Make-Code-Review-Useful-Again/)**
 12. **Triage and move all technical issues/stories in you issue tracker application to the one list**, so you will be able to see whole picture of your real technical debt and have realistic plan for it. 
 13. **Create template for new issues/bugs/ stories in the issue tracker.** Without good descriptions in your issues they became an absolutely useless. This is necessary bureaucracy to save developers time and focus. 
-14. **Investigate most confusing and affective parts in application** and create a plan to how to make them better
+14. **Investigate most confusing and affective parts in application** and create a plan to how to make them better. Code quality/complexity measurement tools and services like CodeCov or Coveralls can help you with that.
 15. **Start creating tests for all newly created code**, and insist on them on code reviews (at least acceptance tests should cover the issue).
-16. **Follow the “The Boy Scouts Rule”**, create the tests for part you touch and refactor it. Try to spend on this at least 20% of time.  
+16. **Follow the “The Boy Scouts Rule”**, create the tests for part you touch and refactor it. Try to spend on this at least 20% of time.
+17. **Try to [measure your team engineering competency](http://www.savvyclutch.com/measuring-software-engineering-competency/)**. Team should be able to see how it grows. 
 
 # LR: Details
 So, where is the technical debt most often accumulated? On a new project team usually:
 
-1. Fear to make the changes
-2. Has no completely understanding of the application domain logic 
-3. Skip unit/functional/acceptance/performance tests, and testing infrastructure at all
-4. Implement manual deployment strategy and infrastructure configuration
-5. Do not track requirements
-6. Configure Dev environment and onboarding manually
-7. Has no backup automation for data
+1. Has no backup automation for data
+2. Fear to make the changes
+3. Has no completely understanding of the application domain logic 
+4. Skip unit/functional/acceptance/performance tests, and testing infrastructure at all
+5. Implement manual deployment strategy and infrastructure configuration
+6. Do not track requirements
+7. Configure Dev environment and onboarding manually
 8. Has no data sampling for dev/QA purposes 
 9. Has a lot of “code smells” in source code, design by committee with a lot of hidden requirements due to lack of refactoring
 10. Has a lot of bugs and requests with the poor descriptions, divided between 3-4 different projects/boards/lists in the issue tracker 
 11. Has almost no process or procedures how to dealing with issues/features
 
-Let me describe each a little. 
-
-From my experience, the most destructive, hard to fix and influencing the speed of development thing is infrastructure. 
-This includes: application configuration management, application requirements management, dev environment, deployment process, testing infrastructure (local and CI) and commitment process. Without any of this the efficiency fall dramastically with no chance to become better. 
-
-Without configuration management it’s very hard not to introduce bugs on production because of difference between local machines and production machines and this can cause critical issues for application users. 
-
-Without project requirements management it's impossible to create good deployment and onboarding process, so both can take a days or, sometimes, weeks. 
-
-Without useful developer environment, developers will spend a lot of time trying to figure out if the particular issue are related to their local environment, or it’s a general issue; some things can’t be run or tested on a local machine at all (for example delayed jobs, file storing in case when it’s configured to store on the third-party resources like S3, mail sending etc.); will not able to reproduce bugs from other developers or production; it will be hard to implement configuration or new requirements without  breaking other team member processes; 
-
-Without simple and understandable deployment process team will have a hard time delivering the fixes and new features, and this can impact an application users which is critical. Technical dept in this process usually very time-consuming risky and stressful.  
-
-Without testing infrastructure team can’t create the tests. It’s not necessary to become crazy and move all resources to create tests for existing code, but developers have to have a possibility to creating the tests when they can and run in a regular bases. Without tests developers can’t effectively refactor code or implement a new features without introducing new bugs, so they should do all manual testing which is very ineffective, time-consuming and bad for team morale. Having this infrastructure will give the opportunity to make project health better over the time. Without it this will likely never happen.
-
-So, fixing the infrastructure issues is the key to manage the technical debt.  
+Let me describe them a little. 
 
 Data backing - it a most important part to decrease the risk. There is no way to make a lot of changes without mistakes, so team should not fear that their mistakes will result in data loss or corruption, which is, probably, the worst thing that can happen. 
 Managing the TD in a code is more straightforward. Some solutions already covered by the best practices of used languages, tools and frameworks. It's not very difficult to identify the problem and engineer the solution, and with the proper testing risk can be minimal. Refactoring, test creation and code reviews should be permanent part of the development process.  
-One more thing, which, I believe,  is very important to successful reduce of TD. Technical debt does not grow overnight. Sometimes it takes a years before people start thinking about to do something with, and it’s usually because they didn’t saw the whole picture to the very end, and start looking at it when any change became taking weeks and bugs and complaints numbers growth exponentially. This often because of issues organization for tech team. Leads organize bugs/stories/requests/tasks independently into different lists/projects, which hide the real scope of work. To avoid this, team should collect all technical tasks, bugs and issues in the one list. It will be a big list, but it will show how are you really deal with existing Technical Debt and implement features stories in the same time. Keeping things in different lists/boards/projects only hide the real situation. Splitting them to the different project has sense only when the separate teams will work on them.  
+
+From my experience, the most destructive, hard to fix and influencing the speed of development thing is infrastructure. 
+This includes: application configuration management, application requirements management, dev environment, deployment process, 
+testing infrastructure (local and CI) and commitment process. Without any of this the efficiency fall dramastically with no chance to become better. 
+
+Without testing infrastructure team can’t create the tests, and, as result, developers have fear to make the changes. It’s not necessary to become crazy and move all resources to create tests for existing code, but developers have to have a possibility to creating the tests when they can and run in a regular bases. 
+Without tests developers can’t effectively refactor code or implement a new features without introducing new bugs, so they should do all manual testing which is very ineffective, time-consuming and bad for team morale. 
+I recommend to start from acceptance tests - with them team can cover most important features with the minimall effort, and, even better - get the documented domain logic. 
+Having this infrastructure will give the opportunity to make project health better over the time. Without it this will likely never happen.
+
+Without configuration management it’s very hard not to introduce bugs on production because of difference between local machines 
+and production machines and this can cause critical issues for application users. 
+
+Without project dependency requirements management it's impossible to create good deployment and onboarding process, so both can take a days or, sometimes, weeks. 
+
+Without useful developer environment, developers will spend a lot of time trying to figure out if the particular issue are related to their local environment, 
+or it’s a general issue; some things can’t be run or tested on a local machine at all (for example delayed jobs, file storing in case when it’s configured to store on the third-party resources like S3, mail sending etc.); will not able to reproduce bugs from other developers or production; it will be hard to implement configuration or new requirements without  breaking other team member processes; 
+
+Without simple and understandable deployment process team will have a hard time delivering the fixes and new features, 
+and this can impact an application users which is critical. Technical dept in this process usually very time-consuming risky and stressful. 
+
+Code issues and data sampling issues is simply consequences of infrastructure and process issues. Test, code reviews and code quality measurement tools will help to deal with that.  
+
+One more thing, which, I believe,  is very important to successful reduce of TD. Technical debt does not grow overnight. Sometimes it takes a years before people start thinking about to do something with, and it’s usually because they didn’t saw the whole picture to the very end, and start looking at it when any change became taking weeks and bugs and complaints numbers growth exponentially. This often because of issues organization for tech team. 
+Leads organize bugs/stories/requests/tasks independently into different lists/projects, which hide the real scope of work. To avoid this, team should collect all technical tasks, bugs and issues in the one list. It will be a big list, but it will show how are you really deal with existing Technical Debt and implement features stories in the same time. Keeping things in different lists/boards/projects only hide the real situation. 
+Splitting them to the different project has sense only when the separate teams will work on them.  
+
+So, fixing the infrastructure issues is the key to manage the technical debt.  
 
 So, to summarize all of that:
 
