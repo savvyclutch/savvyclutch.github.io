@@ -312,5 +312,5 @@ Let’s try to build jar file:
 
     $ docker run --rm bdd_hadoop gradle jar
 
-Now we need to create some acceptance tests. This will be in the the Part II.
+Now we need to create some acceptance tests. This will be in the the [Part II](http://www.savvyclutch.com/qa/BDD-tests-for-Hadoop-with-Cucumber-part-II/).
 
