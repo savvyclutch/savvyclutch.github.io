@@ -51,9 +51,14 @@ So, where is the technical debt most often accumulated? On a new project team us
 10. Has a lot of bugs and requests with the poor descriptions, divided between 3-4 different projects/boards/lists in the issue tracker 
 11. Has almost no process or procedures how to dealing with issues/features
 
-Let me describe them a little. 
+Let me describe few most important of them. 
+
+First of all, we must get rid of fear of changes. 
 
 Data backing - it a most important part to decrease the risk. There is no way to make a lot of changes without mistakes, so team should not fear that their mistakes will result in data loss or corruption, which is, probably, the worst thing that can happen. 
+
+Also, developers should be confident that application do what it suppose to do and it do it in the correct way, does not matter what changes in code developers made. The most effective way to do it - create Acceptance Tests. These tests are ease to do and team will get application logic documented in code and confidency that they don't break anything big on minor code changes. 
+
 Managing the TD in a code is more straightforward. Some solutions already covered by the best practices of used languages, tools and frameworks. It's not very difficult to identify the problem and engineer the solution, and with the proper testing risk can be minimal. Refactoring, test creation and code reviews should be permanent part of the development process.  
 
 From my experience, the most destructive, hard to fix and influencing the speed of development thing is infrastructure. 
@@ -63,7 +68,7 @@ testing infrastructure (local and CI) and commitment process. Without any of thi
 Without testing infrastructure team can’t create the tests, and, as result, developers have fear to make the changes. It’s not necessary to become crazy and move all resources to create tests for existing code, but developers have to have a possibility to creating the tests when they can and run in a regular bases. 
 Without tests developers can’t effectively refactor code or implement a new features without introducing new bugs, so they should do all manual testing which is very ineffective, time-consuming and bad for team morale. 
 I recommend to start from acceptance tests - with them team can cover most important features with the minimall effort, and, even better - get the documented domain logic. 
-Having this infrastructure will give the opportunity to make project health better over the time. Without it this will likely never happen.
+Having this infrastructure will give the opportunity to make project health better over the time. Without it, this will likely never happen.
 
 Without configuration management it’s very hard not to introduce bugs on production because of difference between local machines 
 and production machines and this can cause critical issues for application users. 
@@ -78,11 +83,11 @@ and this can impact an application users which is critical. Technical dept in th
 
 Code issues and data sampling issues is simply consequences of infrastructure and process issues. Test, code reviews and code quality measurement tools will help to deal with that.  
 
-One more thing, which, I believe,  is very important to successful reduce of TD. Technical debt does not grow overnight. Sometimes it takes a years before people start thinking about to do something with, and it’s usually because they didn’t saw the whole picture to the very end, and start looking at it when any change became taking weeks and bugs and complaints numbers growth exponentially. This often because of issues organization for tech team. 
-Leads organize bugs/stories/requests/tasks independently into different lists/projects, which hide the real scope of work. To avoid this, team should collect all technical tasks, bugs and issues in the one list. It will be a big list, but it will show how are you really deal with existing Technical Debt and implement features stories in the same time. Keeping things in different lists/boards/projects only hide the real situation. 
+One more thing, which, I believe, is also very important to successful reduce of TD. Technical debt does not grow overnight. Sometimes it takes years before people start thinking about doing something with it, and it’s usually because they didn’t saw the whole picture till the very end, and start looking at it when any change became taking weeks and bugs and complaints numbers growth exponentially. Often this happens because of bad issue management in the tech team. 
+Leads organize bugs/stories/requests/tasks independently into different lists/projects, which hide the real scope of work and makes each team member work on several things at once. To avoid this, team should collect all technical tasks, bugs and issues in the one list. It will be a big list, but it will show how you really deal with existing Technical Debt and implement features stories in the same time. Keeping things in different lists/boards/projects only hide the real situation. 
 Splitting them to the different project has sense only when the separate teams will work on them.  
 
-So, fixing the infrastructure issues is the key to manage the technical debt.  
+So, fixing the infrastructure issues and showing the real scope of work is the key to manage the technical debt.  
 
 So, to summarize all of that:
 
