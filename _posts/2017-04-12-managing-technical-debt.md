@@ -5,7 +5,7 @@ description: "The obvious plan how to manage technical debt."
 author: bogdan
 modified: 2014-12-24
 tags: [code review, agile, process, qa]
-categories: [process]
+categories: [Process]
 image:
     feature: posts/tech_debt/title.jpg
 ---
