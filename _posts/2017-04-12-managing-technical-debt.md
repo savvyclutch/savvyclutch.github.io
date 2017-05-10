@@ -10,14 +10,14 @@ image:
     feature: posts/tech_debt/title.jpg
 ---
 
-# WHAT IS “TECHNICAL DEBT”?
+## WHAT IS “TECHNICAL DEBT”?
 
 Martin Fowler [has a great explanation](https://martinfowler.com/bliki/TechnicalDebt.html) of this term and the problem behind it.  Many startups and new projects use quick-and-dirty solutions to achieve their goals as soon as possible, which overcomplicates a project, slows it down, makes it hard to change or implement new features and full of bugs. I'd like to bring up the most common issues and how to manage them in the most effective way, from my point of view.
 A project with big technical debt leading to the fear of change. Any change can have unexpected effect and produce more bugs. And there is only one way to fearless development - it’s automated tests, which usually don’t exist on such projects. So technical debt is mostly about luck of control of the project quality. 
 There are other common issues on the projects with big TD, but this is the most important and, unfortunately, a heavily underestimated one.
  <!-- more -->
  
-# TL;DR: Plan
+## TL;DR: Plan
 1. **Create automatic backup for application users data.** We don’t want to corrupt user data.
 2. **Start using [commit strategy and workflow](http://nvie.com/posts/a-successful-git-branching-model/)** and make sure that everybody in a team understands it. There should be a clear process for publishing changes.
 3. **Create/integrate a tool for application requirements management.** In these days some frameworks already have it: ruby bundler, npm etc. Also, OS requirements for testing/production can be managed using containerized solutions like Docker
@@ -36,7 +36,7 @@ There are other common issues on the projects with big TD, but this is the most 
 16. **Follow the “The Boy Scouts Rule”**, create the tests for part you touch and refactor it. Try to spend on this at least 20% of time.
 17. **Try to [measure your team engineering competency](http://www.savvyclutch.com/measuring-software-engineering-competency/)**. Team should be able to see how it grows. 
 
-# LR: Details
+## LR: Details
 So, where is the technical debt most often accumulated? On a new project team usually:
 
 1. Has no backup automation for data
