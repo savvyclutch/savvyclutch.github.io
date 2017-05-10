@@ -10,8 +10,6 @@ image:
     feature: posts/tech_debt/title.jpg
 ---
 
-## WHAT IS “TECHNICAL DEBT”?
-
 Martin Fowler [has a great explanation](https://martinfowler.com/bliki/TechnicalDebt.html) of this term and the problem behind it.  Many startups and new projects use quick-and-dirty solutions to achieve their goals as soon as possible, which overcomplicates a project, slows it down, makes it hard to change or implement new features and full of bugs. I'd like to bring up the most common issues and how to manage them in the most effective way, from my point of view.
 A project with big technical debt leading to the fear of change. Any change can have unexpected effect and produce more bugs. And there is only one way to fearless development - it’s automated tests, which usually don’t exist on such projects. So technical debt is mostly about luck of control of the project quality. 
 There are other common issues on the projects with big TD, but this is the most important and, unfortunately, a heavily underestimated one.
