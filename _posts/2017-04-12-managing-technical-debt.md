@@ -11,7 +11,9 @@ image:
 ---
 
 Martin Fowler [has a great explanation](https://martinfowler.com/bliki/TechnicalDebt.html) of this term and the problem behind it.  Many startups and new projects use quick-and-dirty solutions to achieve their goals as soon as possible, which overcomplicates a project, slows it down, makes it hard to change or implement new features and full of bugs. I'd like to bring up the most common issues and how to manage them in the most effective way, from my point of view.
+
 A project with big technical debt leading to the fear of change. Any change can have unexpected effect and produce more bugs. And there is only one way to fearless development - it’s automated tests, which usually don’t exist on such projects. So technical debt is mostly about luck of control of the project quality. 
+
 There are other common issues on the projects with big TD, but this is the most important and, unfortunately, a heavily underestimated one.
  <!-- more -->
  
@@ -64,8 +66,11 @@ This includes: application configuration management, application requirements ma
 testing infrastructure (local and CI) and commitment process. Without any of this the efficiency fall dramastically with no chance to become better. 
 
 Without testing infrastructure team can’t create the tests, and, as result, developers have fear to make the changes. It’s not necessary to become crazy and move all resources to create tests for existing code, but developers have to have a possibility to creating the tests when they can and run in a regular bases. 
+
 Without tests developers can’t effectively refactor code or implement a new features without introducing new bugs, so they should do all manual testing which is very ineffective, time-consuming and bad for team morale. 
+
 I recommend to start from acceptance tests - with them team can cover most important features with the minimall effort, and, even better - get the documented domain logic. 
+
 Having this infrastructure will give the opportunity to make project health better over the time. Without it, this will likely never happen.
 
 Without configuration management it’s very hard not to introduce bugs on production because of difference between local machines 
@@ -82,6 +87,7 @@ and this can impact an application users which is critical. Technical dept in th
 Code issues and data sampling issues is simply consequences of infrastructure and process issues. Test, code reviews and code quality measurement tools will help to deal with that.  
 
 One more thing, which, I believe, is also very important to successful reduce of TD. Technical debt does not grow overnight. Sometimes it takes years before people start thinking about doing something with it, and it’s usually because they didn’t saw the whole picture till the very end, and start looking at it when any change became taking weeks and bugs and complaints numbers growth exponentially. Often this happens because of bad issue management in the tech team. 
+
 Leads organize bugs/stories/requests/tasks independently into different lists/projects, which hide the real scope of work and makes each team member work on several things at once. To avoid this, team should collect all technical tasks, bugs and issues in the one list. It will be a big list, but it will show how you really deal with existing Technical Debt and implement features stories in the same time. Keeping things in different lists/boards/projects only hide the real situation. 
 Splitting them to the different project has sense only when the separate teams will work on them.  
 
