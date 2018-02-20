@@ -3,7 +3,7 @@ layout: post
 title: Project documentation 
 description: "Minimalistic but useful project documentation."
 author: bogdan
-modified: 2014-12-24
+modified: 2018-02-12
 tags: [documentation, agile, process, qa]
 categories: [Process]
 image:
