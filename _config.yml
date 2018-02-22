@@ -56,22 +56,24 @@ authors:
   sergii:
     name: Sergii Naumenko
     display_name: Sergii
-#    gravatar: 12e480a364a5c19214f99b4dfe9a11d5
     bio: "I'm Software Engineer at [Intelliarts](http://intelliarts.com/)."
     email: sergii@savvyclutch.com
   andrii:
     name: Andrii Kozlovskyi
     display_name: Andrii
-  #    gravatar: 12e480a364a5c19214f99b4dfe9a11d5
     bio: "I'm Software Engineer at [Intelliarts](http://intelliarts.com/)."
     email: andrii@savvyclutch.com
   vova:
     name: Volodymyr Kelembet
     display_name: Volodymyr
-  #    gravatar: 12e480a364a5c19214f99b4dfe9a11d5
     bio: "I'm Software Engineer at [Intelliarts](http://intelliarts.com/)."
     email: vova@savvyclutch.com
-
+  luda:
+    name: Luda Sobutska
+    diaplay_name: Luda Sobutska
+    email: luda.sobutska@gmail.com
+    bio: IT Recruiter learning how to code
+    github: intra1
 # Twitter account associated with the site if different from owner/author twitter account.
 # Used in Twitter cards.
 twitter: SavvyClutchEC
